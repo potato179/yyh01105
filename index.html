@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>용현이 신고센터</title>
 
@@ -27,78 +24,70 @@
 
       background:
         radial-gradient(
-          circle at top left,
-          #fff4d8 0,
-          transparent 35%
+          circle at 10% 0%,
+          #fff2b8 0,
+          transparent 30%
         ),
         radial-gradient(
-          circle at bottom right,
-          #e9f1ff 0,
+          circle at 100% 100%,
+          #dfeaff 0,
           transparent 35%
         ),
-        #f6f7f9;
+        #f5f6f8;
 
       color: #171717;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 24px;
+      padding: 30px 16px 60px;
     }
 
-    .wrapper {
+    .container {
       width: 100%;
-      max-width: 560px;
+      max-width: 620px;
+      margin: 0 auto;
     }
 
     /* =========================
-       Header
+       HEADER
     ========================= */
 
-    .top {
+    .header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
 
-      padding: 7px 12px;
+      padding: 7px 13px;
+
+      border-radius: 999px;
 
       background: #171717;
       color: white;
 
-      border-radius: 999px;
-
-      font-size: 12px;
-      font-weight: 700;
-
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
-    .title {
-      margin: 16px 0 8px;
+    h1 {
+      margin: 15px 0 8px;
 
-      font-size: clamp(30px, 7vw, 46px);
-      line-height: 1.1;
-
+      font-size: clamp(34px, 8vw, 48px);
       font-weight: 900;
-      letter-spacing: -2px;
+      letter-spacing: -2.5px;
+      line-height: 1.05;
     }
 
-    .title span {
+    h1 span {
+      background: #ffe04b;
+
+      padding: 0 8px 5px;
+
+      border-radius: 8px;
+
       display: inline-block;
 
       transform: rotate(-2deg);
-
-      background: #ffe15c;
-
-      padding: 0 8px 4px;
-
-      border-radius: 7px;
     }
 
     .subtitle {
@@ -111,44 +100,123 @@
     }
 
     /* =========================
-       Card
-    ========================= */
+       1303
+       ========================= */
 
-    .card {
-      position: relative;
+    .help-call {
+      margin-bottom: 18px;
 
-      background: white;
+      padding: 20px;
 
-      border: 2px solid #171717;
-      border-radius: 22px;
+      border-radius: 18px;
 
-      padding: 28px;
+      background: #172b4d;
+      color: white;
 
-      box-shadow:
-        7px 7px 0 #171717;
+      box-shadow: 6px 6px 0 #0d1728;
     }
 
-    .warning {
+    .help-top {
       display: flex;
       align-items: center;
       gap: 10px;
 
-      margin-bottom: 22px;
+      margin-bottom: 10px;
+    }
 
-      padding: 13px 15px;
+    .help-icon {
+      width: 38px;
+      height: 38px;
 
-      background: #fff7d6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      border: 1px solid #eadb8a;
-      border-radius: 12px;
+      background: #fff;
+
+      border-radius: 50%;
+
+      font-size: 20px;
+    }
+
+    .help-title {
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .help-number {
+      margin: 5px 0 10px;
+
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .help-description {
+      margin: 0;
+
+      color: #dce5f3;
 
       font-size: 13px;
-      line-height: 1.5;
+      line-height: 1.65;
+    }
+
+    .help-button {
+      display: block;
+
+      margin-top: 15px;
+      padding: 12px;
+
+      border-radius: 10px;
+
+      background: white;
+      color: #172b4d;
+
+      text-align: center;
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       CARD
+       ========================= */
+
+    .card {
+      background: white;
+
+      border: 2px solid #171717;
+      border-radius: 20px;
+
+      padding: 24px;
+
+      box-shadow: 6px 6px 0 #171717;
+
+      margin-bottom: 22px;
+    }
+
+    .warning {
+      display: flex;
+      gap: 10px;
+
+      padding: 13px;
+
+      margin-bottom: 20px;
+
+      border-radius: 11px;
+
+      background: #fff7d8;
+      border: 1px solid #eadb8a;
+
+      font-size: 12px;
+      line-height: 1.55;
     }
 
     .warning-icon {
-      font-size: 21px;
       flex-shrink: 0;
+      font-size: 18px;
     }
 
     .section-title {
@@ -169,97 +237,218 @@
     }
 
     textarea {
-      display: block;
-
       width: 100%;
-      min-height: 220px;
+      min-height: 200px;
 
-      padding: 16px;
+      padding: 15px;
 
       border: 2px solid #dedede;
-      border-radius: 14px;
+      border-radius: 13px;
 
       resize: vertical;
 
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.6;
 
       outline: none;
 
-      transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-    }
-
-    textarea:hover {
-      border-color: #bbb;
+      transition: 0.2s;
     }
 
     textarea:focus {
       border-color: #171717;
 
       box-shadow:
-        4px 4px 0 #ffe15c;
+        4px 4px 0 #ffe04b;
     }
 
     textarea::placeholder {
       color: #aaa;
     }
 
-    /* =========================
-       Button
-       ========================= */
-
     .submit-button {
       width: 100%;
 
-      margin-top: 16px;
-      padding: 17px 20px;
+      margin-top: 14px;
+      padding: 16px;
 
       border: 2px solid #171717;
-      border-radius: 13px;
+      border-radius: 12px;
 
-      background: #ffdf43;
-      color: #171717;
+      background: #ffe04b;
 
       font-family: inherit;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
 
       cursor: pointer;
 
-      box-shadow:
-        4px 4px 0 #171717;
+      box-shadow: 4px 4px 0 #171717;
 
-      transition:
-        transform 0.12s,
-        box-shadow 0.12s,
-        background 0.12s;
+      transition: 0.12s;
     }
 
     .submit-button:hover {
-      background: #ffea73;
       transform: translate(-1px, -1px);
-
-      box-shadow:
-        5px 5px 0 #171717;
+      background: #ffea76;
     }
 
     .submit-button:active {
       transform: translate(3px, 3px);
-
-      box-shadow:
-        1px 1px 0 #171717;
+      box-shadow: 1px 1px 0 #171717;
     }
 
     /* =========================
-       Footer
+       REPORT LIST
        ========================= */
 
-    .footer {
+    .list-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 14px;
+    }
+
+    .list-title {
+      margin: 0;
+
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .report-count {
+      padding: 5px 9px;
+
+      border-radius: 999px;
+
+      background: #171717;
+      color: white;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .reports {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .report {
+      padding: 15px;
+
+      background: #f7f7f7;
+
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+    }
+
+    .report-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 8px;
+
+      color: #999;
+
+      font-size: 11px;
+    }
+
+    .report-number {
+      font-weight: 900;
+      color: #555;
+    }
+
+    .report-content {
+      white-space: pre-wrap;
+      word-break: break-word;
+
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .empty {
+      padding: 35px 15px;
+
+      text-align: center;
+
+      color: #aaa;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       SUCCESS
+       ========================= */
+
+    .success {
+      display: none;
+
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 15px;
+
+      border-radius: 50%;
+
+      background: #ffe04b;
+
+      border: 2px solid #171717;
+
+      font-size: 32px;
+
+      box-shadow: 4px 4px 0 #171717;
+    }
+
+    .success h2 {
+      margin: 0 0 8px;
+
+      font-size: 24px;
+    }
+
+    .success p {
+      margin: 0;
+
+      color: #777;
+
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .again-button {
       margin-top: 18px;
 
+      padding: 10px 15px;
+
+      background: white;
+
+      border: 2px solid #171717;
+      border-radius: 9px;
+
+      font-family: inherit;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
       text-align: center;
 
       color: #999;
@@ -268,115 +457,19 @@
       line-height: 1.6;
     }
 
-    /* =========================
-       Success
-       ========================= */
-
-    .success {
-      display: none;
-
-      text-align: center;
-
-      padding: 28px 10px 8px;
-    }
-
-    .success-icon {
-      width: 72px;
-      height: 72px;
-
-      margin: 0 auto 16px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #ffe15c;
-
-      border: 2px solid #171717;
-      border-radius: 50%;
-
-      font-size: 34px;
-
-      box-shadow:
-        4px 4px 0 #171717;
-
-      animation: pop 0.35s ease-out;
-    }
-
-    .success h2 {
-      margin: 0 0 8px;
-
-      font-size: 25px;
-      letter-spacing: -0.8px;
-    }
-
-    .success p {
-      margin: 0;
-
-      color: #777;
-
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .back-button {
-      margin-top: 22px;
-
-      padding: 12px 18px;
-
-      border: 2px solid #171717;
-      border-radius: 10px;
-
-      background: white;
-
-      font-family: inherit;
-      font-weight: 700;
-
-      cursor: pointer;
-    }
-
-    .back-button:hover {
-      background: #f5f5f5;
-    }
-
-    @keyframes pop {
-      0% {
-        transform: scale(0.5) rotate(-10deg);
-      }
-
-      70% {
-        transform: scale(1.1) rotate(3deg);
-      }
-
-      100% {
-        transform: scale(1) rotate(0);
-      }
-    }
-
-    /* =========================
-       Mobile
-       ========================= */
-
     @media (max-width: 480px) {
       body {
-        padding: 18px 14px;
+        padding: 20px 12px 45px;
       }
 
       .card {
-        padding: 22px 18px;
+        padding: 19px;
 
-        border-radius: 18px;
-
-        box-shadow:
-          5px 5px 0 #171717;
+        box-shadow: 5px 5px 0 #171717;
       }
 
-      .title {
-        font-size: 34px;
-      }
-
-      textarea {
-        min-height: 200px;
+      .help-call {
+        box-shadow: 5px 5px 0 #0d1728;
       }
     }
   </style>
@@ -384,203 +477,421 @@
 
 <body>
 
-  <main class="wrapper">
+<div class="container">
 
-    <!-- Header -->
-    <header class="top">
+  <!-- HEADER -->
+  <header class="header">
 
-      <div class="badge">
-        🚨 YH REPORT CENTER
+    <div class="badge">
+      🚨 YH REPORT CENTER
+    </div>
+
+    <h1>
+      용현이 <span>신고하기</span>
+    </h1>
+
+    <p class="subtitle">
+      용현이의 만행(?)을 목격하셨나요?<br>
+      여러분의 소중한 제보를 기다리고 있습니다.
+    </p>
+
+  </header>
+
+
+  <!-- 국방헬프콜 -->
+  <section class="help-call">
+
+    <div class="help-top">
+
+      <div class="help-icon">
+        📞
       </div>
 
-      <h1 class="title">
-        용현이 <span>신고하기</span>
-      </h1>
+      <div class="help-title">
+        진짜 신고가 필요하다면?
+      </div>
 
-      <p class="subtitle">
-        용현이의 만행(?)을 목격하셨나요?<br />
-        여러분의 소중한 제보를 기다리고 있습니다.
+    </div>
+
+    <div class="help-number">
+      1303
+    </div>
+
+    <p class="help-description">
+      국방헬프콜 1303<br>
+      병영생활 고충 상담 · 군범죄·성폭력 신고/상담 ·
+      방위사업비리 신고/상담
+    </p>
+
+    <a
+      class="help-button"
+      href="tel:1303"
+    >
+      📞 국방헬프콜 1303 전화하기
+    </a>
+
+  </section>
+
+
+  <!-- 신고 작성 -->
+  <section class="card">
+
+    <div class="warning">
+
+      <div class="warning-icon">
+        ⚠️
+      </div>
+
+      <div>
+        <strong>잠깐!</strong><br>
+        이 사이트는 장난성 신고 게시판입니다.
+        개인정보나 확인되지 않은 사실을 작성하지 마세요.
+        실제 군 관련 고충이나 신고가 필요하다면
+        국방헬프콜 <strong>1303</strong>을 이용하세요.
+      </div>
+
+    </div>
+
+
+    <form id="reportForm">
+
+      <div class="section-title">
+
+        <strong>
+          📋 신고 내용
+        </strong>
+
+        <span
+          class="counter"
+          id="counter"
+        >
+          0 / 2000
+        </span>
+
+      </div>
+
+
+      <textarea
+        id="report"
+        maxlength="2000"
+        placeholder="예시)
+- 용현이가 또 내 간식을 먹었습니다.
+- 용현이가 약속시간에 늦었습니다.
+- 그냥 신고하고 싶었습니다."
+        required
+      ></textarea>
+
+
+      <button
+        type="submit"
+        class="submit-button"
+      >
+        🚨 용현이 신고 접수하기
+      </button>
+
+    </form>
+
+
+    <!-- 접수 완료 -->
+    <div
+      class="success"
+      id="success"
+    >
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>
+        신고 접수 완료!
+      </h2>
+
+      <p>
+        소중한 신고가 접수되었습니다.<br>
+        용현이에게 전달될 예정입니다. 아마도요.
       </p>
 
-    </header>
-
-
-    <!-- Main Card -->
-    <section class="card">
-
-      <!-- Warning -->
-      <div class="warning">
-
-        <div class="warning-icon">
-          ⚠️
-        </div>
-
-        <div>
-          <strong>주의사항</strong><br />
-          장난으로 운영되는 사이트입니다.
-          너무 진지하게 받아들이지 마세요.
-        </div>
-
-      </div>
-
-
-      <!-- Form -->
-      <form id="reportForm">
-
-        <div class="section-title">
-
-          <strong>
-            📋 신고 내용
-          </strong>
-
-          <span
-            class="counter"
-            id="counter"
-          >
-            0 / 2000
-          </span>
-
-        </div>
-
-
-        <textarea
-          id="report"
-          name="report"
-          maxlength="2000"
-          placeholder="예시)
-- 용현이가 또 약속시간에 늦었습니다.
-- 용현이가 제 간식을 먹었습니다.
-- 그냥 신고하고 싶었습니다."
-          required
-        ></textarea>
-
-
-        <button
-          type="submit"
-          class="submit-button"
-        >
-          🚨 용현이 신고 접수하기
-        </button>
-
-      </form>
-
-
-      <!-- Success -->
-      <div
-        class="success"
-        id="successMessage"
+      <button
+        type="button"
+        class="again-button"
+        id="againButton"
       >
+        다시 신고하기
+      </button>
 
-        <div class="success-icon">
-          ✓
-        </div>
+    </div>
 
-        <h2>
-          신고 접수 완료!
-        </h2>
+  </section>
 
-        <p>
-          소중한 신고가 정상적으로 접수되었습니다.<br />
-          용현이에게 전달될 예정입니다. 아마도요.
-        </p>
 
-        <button
-          class="back-button"
-          id="backButton"
-          type="button"
-        >
-          다시 신고하기
-        </button>
+  <!-- 누적 신고 -->
+  <section class="card">
 
+    <div class="list-header">
+
+      <h2 class="list-title">
+        📢 누적 신고 내역
+      </h2>
+
+      <span
+        class="report-count"
+        id="reportCount"
+      >
+        0건
+      </span>
+
+    </div>
+
+
+    <div
+      class="reports"
+      id="reports"
+    >
+      <div class="empty">
+        아직 접수된 신고가 없습니다.<br>
+        첫 번째 신고자가 되어보세요.
       </div>
+    </div>
 
-    </section>
-
-
-    <footer class="footer">
-      YH Report Center © 2026<br />
-      모든 신고는 매우 진지하게(?) 검토됩니다.
-    </footer>
-
-  </main>
+  </section>
 
 
-  <script>
-    const form = document.getElementById("reportForm");
-    const textarea = document.getElementById("report");
-    const counter = document.getElementById("counter");
+  <footer>
+    YH Report Center © 2026<br>
+    이 사이트는 실제 신고기관이 아닙니다.
+  </footer>
 
-    const successMessage =
-      document.getElementById("successMessage");
-
-    const backButton =
-      document.getElementById("backButton");
+</div>
 
 
-    /* 글자 수 */
-    textarea.addEventListener("input", () => {
-      counter.textContent =
-        `${textarea.value.length} / 2000`;
-    });
+<script>
+
+  const form =
+    document.getElementById("reportForm");
+
+  const textarea =
+    document.getElementById("report");
+
+  const counter =
+    document.getElementById("counter");
+
+  const success =
+    document.getElementById("success");
+
+  const againButton =
+    document.getElementById("againButton");
+
+  const reports =
+    document.getElementById("reports");
+
+  const reportCount =
+    document.getElementById("reportCount");
 
 
-    /* 신고 */
-    form.addEventListener("submit", (event) => {
+  /*
+   * ---------------------------------------
+   * 현재는 브라우저 저장 방식
+   * ---------------------------------------
+   *
+   * 이 방식은 같은 브라우저에서만
+   * 신고 내용이 유지됩니다.
+   *
+   * 실제 여러 사람이 공유하는 게시판으로
+   * 만들려면 Supabase 연결이 필요합니다.
+   */
 
-      event.preventDefault();
-
-      const content =
-        textarea.value.trim();
-
-      if (!content) {
-        alert("🚨 신고 내용을 입력해주세요.");
-        textarea.focus();
-        return;
-      }
-
-
-      /*
-       * 현재는 테스트용입니다.
-       *
-       * 실제 신고 내용을 저장하려면
-       * 이 부분에 Supabase 등의 DB 연결을
-       * 추가하면 됩니다.
-       */
-
-      console.log("신고 내용:", content);
+  let reportList =
+    JSON.parse(
+      localStorage.getItem("yhReports") || "[]"
+    );
 
 
-      /* 입력 화면 숨기기 */
-      form.style.display = "none";
+  /* 글자 수 */
+  textarea.addEventListener("input", () => {
+
+    counter.textContent =
+      `${textarea.value.length} / 2000`;
+
+  });
 
 
-      /* 완료 화면 표시 */
-      successMessage.style.display = "block";
+  /* 신고 목록 출력 */
+  function renderReports() {
+
+    reportCount.textContent =
+      `${reportList.length}건`;
 
 
-      /* 맨 위로 이동 */
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+    if (reportList.length === 0) {
 
-    });
+      reports.innerHTML = `
+        <div class="empty">
+          아직 접수된 신고가 없습니다.<br>
+          첫 번째 신고자가 되어보세요.
+        </div>
+      `;
+
+      return;
+    }
 
 
-    /* 다시 신고 */
-    backButton.addEventListener("click", () => {
+    reports.innerHTML =
+      reportList
+        .slice()
+        .reverse()
+        .map((item, index) => {
 
-      textarea.value = "";
-      counter.textContent = "0 / 2000";
+          return `
+            <article class="report">
 
-      successMessage.style.display = "none";
-      form.style.display = "block";
+              <div class="report-meta">
+
+                <span class="report-number">
+                  신고 #${reportList.length - index}
+                </span>
+
+                <span>
+                  ${item.date}
+                </span>
+
+              </div>
+
+              <div class="report-content">
+                ${escapeHTML(item.content)}
+              </div>
+
+            </article>
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /* HTML 삽입 방지 */
+  function escapeHTML(text) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+  }
+
+
+  /* 신고 */
+  form.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+
+    const content =
+      textarea.value.trim();
+
+
+    if (!content) {
+
+      alert(
+        "🚨 신고 내용을 입력해주세요."
+      );
 
       textarea.focus();
 
+      return;
+    }
+
+
+    const now =
+      new Date();
+
+
+    const date =
+      now.toLocaleString(
+        "ko-KR",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      );
+
+
+    reportList.push({
+
+      content: content,
+
+      date: date
+
     });
-  </script>
+
+
+    localStorage.setItem(
+      "yhReports",
+      JSON.stringify(reportList)
+    );
+
+
+    /* 입력창 초기화 */
+
+    textarea.value = "";
+
+    counter.textContent =
+      "0 / 2000";
+
+
+    /* 완료 화면 */
+
+    form.style.display =
+      "none";
+
+    success.style.display =
+      "block";
+
+
+    /* 목록 갱신 */
+
+    renderReports();
+
+
+    window.scrollTo({
+
+      top: 0,
+
+      behavior: "smooth"
+
+    });
+
+  });
+
+
+  /* 다시 신고 */
+
+  againButton.addEventListener(
+    "click",
+    () => {
+
+      success.style.display =
+        "none";
+
+      form.style.display =
+        "block";
+
+      textarea.focus();
+
+    }
+  );
+
+
+  /* 처음 실행 */
+
+  renderReports();
+
+</script>
 
 </body>
 </html>
-```
