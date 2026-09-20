@@ -2,11 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f7f9" />
 
   <title>용현이 신고센터</title>
 
@@ -17,48 +14,55 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        "Apple SD Gothic Neo",
         "Noto Sans KR",
         sans-serif;
 
+      color: #202124;
+
       background:
         radial-gradient(
-          circle at top left,
-          #fff4d8 0,
-          transparent 35%
+          circle at 0% 0%,
+          rgba(255, 244, 216, 0.9) 0,
+          rgba(255, 244, 216, 0) 32%
         ),
         radial-gradient(
-          circle at bottom right,
-          #e9f1ff 0,
-          transparent 35%
+          circle at 100% 100%,
+          rgba(233, 241, 255, 0.9) 0,
+          rgba(233, 241, 255, 0) 34%
         ),
         #f6f7f9;
-
-      color: #171717;
-
-      padding: 24px;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 560px;
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(560px, calc(100% - 32px));
       margin: 0 auto;
+      padding: 32px 0 40px;
     }
 
     /* =========================
-       Header
+       HEADER
     ========================= */
 
-    .top {
+    header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 24px;
     }
 
     .badge {
@@ -67,117 +71,137 @@
       gap: 6px;
 
       padding: 7px 12px;
-
-      background: #171717;
-      color: white;
-
       border-radius: 999px;
 
-      font-size: 12px;
-      font-weight: 700;
+      background: #202124;
+      color: #fff;
 
-      box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.12);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+
+      box-shadow: 0 2px 7px rgba(32, 33, 36, 0.12);
     }
 
     .title {
-      margin: 16px 0 8px;
+      margin: 15px 0 9px;
 
-      font-size: clamp(30px, 7vw, 46px);
-      line-height: 1.1;
-
+      font-size: clamp(32px, 8vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.055em;
       font-weight: 900;
-      letter-spacing: -2px;
     }
 
     .title span {
       display: inline-block;
 
-      transform: rotate(-2deg);
+      padding: 1px 7px 3px;
 
       background: #ffe15c;
-
-      padding: 0 8px 4px;
-
       border-radius: 7px;
+
+      transform: rotate(-2deg);
     }
 
     .subtitle {
       margin: 0;
 
-      color: #777;
-
+      color: #73777f;
       font-size: 14px;
       line-height: 1.6;
     }
 
-
     /* =========================
-       Main Card
+       MAIN CARD
     ========================= */
 
-    .card {
-      position: relative;
+    .main-card {
+      background: #fff;
 
-      background: white;
-
-      border: 2px solid #171717;
+      border: 1px solid #e4e6ea;
       border-radius: 22px;
 
-      padding: 28px;
+      padding: 26px;
 
       box-shadow:
-        7px 7px 0 #171717;
+        0 5px 18px rgba(32, 33, 36, 0.07),
+        0 1px 3px rgba(32, 33, 36, 0.04);
     }
 
-
     /* =========================
-       Warning
+       WARNING
     ========================= */
 
     .warning {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      align-items: flex-start;
+      gap: 12px;
 
-      margin-bottom: 22px;
+      padding: 14px 15px;
 
-      padding: 13px 15px;
+      background: #fff9df;
+      border: 1px solid #f0df96;
+      border-radius: 13px;
 
-      background: #fff7d6;
-
-      border: 1px solid #eadb8a;
-      border-radius: 12px;
-
-      font-size: 13px;
-      line-height: 1.5;
+      margin-bottom: 24px;
     }
 
     .warning-icon {
-      font-size: 21px;
-      flex-shrink: 0;
+      flex: 0 0 auto;
+
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #ffe15c;
+      border-radius: 9px;
+
+      font-size: 16px;
     }
 
+    .warning-content {
+      min-width: 0;
+    }
+
+    .warning-title {
+      margin-bottom: 2px;
+
+      font-size: 13px;
+      font-weight: 800;
+      color: #303030;
+    }
+
+    .warning-text {
+      color: #6d674f;
+      font-size: 13px;
+      line-height: 1.55;
+    }
 
     /* =========================
-       Form
+       FORM
     ========================= */
 
-    .section-title {
+    .form-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
-    .section-title strong {
-      font-size: 15px;
+    .form-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .counter {
-      color: #999;
+      color: #92969d;
       font-size: 12px;
+      font-variant-numeric: tabular-nums;
     }
 
     textarea {
@@ -186,146 +210,97 @@
       width: 100%;
       min-height: 220px;
 
-      padding: 16px;
-
-      border: 2px solid #dedede;
-      border-radius: 14px;
-
       resize: vertical;
 
-      font-family: inherit;
-      font-size: 15px;
-      line-height: 1.6;
+      padding: 15px 16px;
+
+      border: 1px solid #d9dce1;
+      border-radius: 14px;
+
+      background: #fff;
+      color: #202124;
+
+      font-size: 14px;
+      line-height: 1.65;
 
       outline: none;
 
       transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-    }
-
-    textarea:hover {
-      border-color: #bbb;
-    }
-
-    textarea:focus {
-      border-color: #171717;
-
-      box-shadow:
-        4px 4px 0 #ffe15c;
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
     }
 
     textarea::placeholder {
-      color: #aaa;
+      color: #a4a8ae;
     }
 
+    textarea:focus {
+      border-color: #c5a900;
 
-    /* =========================
-       Button
-    ========================= */
+      box-shadow:
+        0 0 0 3px rgba(255, 225, 92, 0.28);
+    }
 
     .submit-button {
       width: 100%;
 
-      margin-top: 16px;
-      padding: 17px 20px;
+      margin-top: 13px;
+      padding: 14px 18px;
 
-      border: 2px solid #171717;
+      border: 1px solid #202124;
       border-radius: 13px;
 
-      background: #ffdf43;
-      color: #171717;
+      background: #ffe15c;
+      color: #202124;
 
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 900;
+      font-size: 14px;
+      font-weight: 800;
 
       cursor: pointer;
 
-      box-shadow:
-        4px 4px 0 #171717;
+      box-shadow: 0 3px 0 #202124;
 
       transition:
-        transform 0.12s,
-        box-shadow 0.12s,
-        background 0.12s;
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        background 0.12s ease;
     }
 
     .submit-button:hover {
-      background: #ffea73;
-
-      transform: translate(-1px, -1px);
-
-      box-shadow:
-        5px 5px 0 #171717;
+      background: #ffdf4a;
     }
 
     .submit-button:active {
-      transform: translate(3px, 3px);
-
-      box-shadow:
-        1px 1px 0 #171717;
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #202124;
     }
 
     .submit-button:disabled {
       opacity: 0.6;
-      cursor: wait;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: 0 2px 0 #202124;
     }
-
 
     /* =========================
-       Message
-    ========================= */
-
-    .message {
-      display: none;
-
-      margin-top: 16px;
-      padding: 13px 14px;
-
-      border-radius: 11px;
-
-      font-size: 13px;
-      line-height: 1.6;
-      font-weight: 700;
-    }
-
-    .message.success {
-      display: block;
-
-      background: #edf9ef;
-      border: 1px solid #a8d9ae;
-
-      color: #287334;
-    }
-
-    .message.error {
-      display: block;
-
-      background: #fff0f0;
-      border: 1px solid #e5aaaa;
-
-      color: #a02d2d;
-    }
-
-
-    /* =========================
-       Success
+       SUCCESS
     ========================= */
 
     .success {
       display: none;
-
       text-align: center;
+      padding: 20px 0 6px;
+    }
 
-      padding: 28px 10px 8px;
+    .success.show {
+      display: block;
     }
 
     .success-icon {
-      width: 72px;
-      height: 72px;
+      width: 70px;
+      height: 70px;
 
-      margin: 0 auto 16px;
+      margin: 0 auto 18px;
 
       display: flex;
       align-items: center;
@@ -333,139 +308,115 @@
 
       background: #ffe15c;
 
-      border: 2px solid #171717;
+      border: 1px solid #202124;
       border-radius: 50%;
 
-      font-size: 34px;
+      font-size: 32px;
 
-      box-shadow:
-        4px 4px 0 #171717;
+      box-shadow: 0 4px 12px rgba(32, 33, 36, 0.1);
 
-      animation: pop 0.35s ease-out;
+      animation: pop 0.35s ease;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+
+      70% {
+        transform: scale(1.06);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .success h2 {
       margin: 0 0 8px;
 
-      font-size: 25px;
-      letter-spacing: -0.8px;
+      font-size: 23px;
+      letter-spacing: -0.04em;
     }
 
     .success p {
-      margin: 0;
+      margin: 0 auto;
 
-      color: #777;
+      max-width: 390px;
 
-      font-size: 14px;
-      line-height: 1.6;
+      color: #73777f;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
     .back-button {
-      margin-top: 22px;
+      margin-top: 20px;
 
-      padding: 12px 18px;
+      padding: 10px 16px;
 
-      border: 2px solid #171717;
+      border: 1px solid #dfe1e5;
       border-radius: 10px;
 
-      background: white;
+      background: #fff;
+      color: #555960;
 
-      font-family: inherit;
+      font-size: 13px;
       font-weight: 700;
 
       cursor: pointer;
+
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
     }
 
     .back-button:hover {
-      background: #f5f5f5;
+      background: #f7f8fa;
+      border-color: #cfd2d7;
     }
 
-
     /* =========================
-       1303
+       1303 HELP
     ========================= */
 
     .help-card {
-      margin-top: 18px;
+      margin-top: 24px;
 
-      padding: 20px;
+      padding: 16px;
 
-      background: #edf6ff;
-
-      border: 2px solid #171717;
-      border-radius: 18px;
-
-      box-shadow:
-        5px 5px 0 #171717;
-    }
-
-    .help-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      margin-bottom: 10px;
-    }
-
-    .help-icon {
-      width: 42px;
-      height: 42px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #1769aa;
-      color: white;
-
-      border-radius: 12px;
-
-      font-size: 21px;
-
-      flex-shrink: 0;
+      background: #f7f8fa;
+      border: 1px solid #e4e6ea;
+      border-radius: 14px;
     }
 
     .help-title {
-      margin: 0;
-
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .help-description {
-      margin: 0;
-
-      color: #66727e;
-
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .help-button {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 7px;
 
-      width: 100%;
-
-      margin-top: 14px;
-      padding: 12px;
-
-      background: #1769aa;
-      color: white;
-
-      border: 2px solid #171717;
-      border-radius: 10px;
-
-      text-decoration: none;
+      margin-bottom: 7px;
 
       font-size: 14px;
+      font-weight: 800;
+    }
+
+    .help-text {
+      margin: 0;
+
+      color: #686d75;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .help-number {
+      color: #202124;
       font-weight: 900;
     }
 
-
     /* =========================
-       Reports
+       REPORT LIST
     ========================= */
 
     .reports-section {
@@ -477,115 +428,111 @@
       align-items: center;
       justify-content: space-between;
 
-      margin-bottom: 10px;
+      margin-bottom: 11px;
     }
 
-    .reports-heading-left {
+    .reports-title-wrap {
       display: flex;
       align-items: center;
       gap: 8px;
-
       min-width: 0;
     }
 
-    .reports-heading h2 {
+    .reports-title {
       margin: 0;
 
-      font-size: 17px;
-      font-weight: 900;
-
-      letter-spacing: -0.5px;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
     }
 
-    .report-count {
-      min-width: 28px;
-      height: 25px;
-
-      padding: 0 8px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #171717;
-      color: #ffe15c;
-
-      border-radius: 999px;
-
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .realtime {
+    .realtime-status {
       display: inline-flex;
       align-items: center;
       gap: 5px;
 
-      color: #999;
-
-      font-size: 9px;
-      font-weight: 700;
-
+      color: #8a8e95;
+      font-size: 10px;
       white-space: nowrap;
     }
 
-    .realtime-dot {
+    .status-dot {
       width: 6px;
       height: 6px;
 
       border-radius: 50%;
-
-      background: #aaa;
+      background: #c4c7cc;
     }
 
-    .realtime.connected {
-      color: #239447;
+    .status-dot.connected {
+      background: #36b37e;
     }
 
-    .realtime.connected .realtime-dot {
-      background: #25c45a;
+    .report-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
 
-      box-shadow:
-        0 0 6px rgba(37, 196, 90, 0.7);
+      min-width: 26px;
+      height: 22px;
+
+      padding: 0 7px;
+
+      border-radius: 999px;
+
+      background: #f0f1f3;
+      color: #686c73;
+
+      font-size: 11px;
+      font-weight: 800;
     }
 
     .reports-box {
       overflow: hidden;
 
-      background: white;
+      border: 1px solid #e2e4e8;
+      border-radius: 14px;
 
-      border: 2px solid #171717;
-      border-radius: 18px;
+      background: #fff;
 
-      box-shadow:
-        5px 5px 0 #171717;
+      box-shadow: 0 3px 12px rgba(32, 33, 36, 0.045);
     }
 
     .reports-header {
-      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      background: #171717;
-      color: white;
+      padding: 11px 14px;
 
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
+      background: #202124;
+      color: #fff;
     }
 
-    .report-list {
-      max-height: 520px;
+    .reports-header-title {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
 
+    .reports-header-count {
+      color: #bfc1c5;
+      font-size: 10px;
+    }
+
+    .reports-list {
+      max-height: 460px;
       overflow-y: auto;
     }
 
     .report-item {
-      padding: 15px;
+      padding: 14px;
 
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #edf0f2;
     }
 
     .report-item:last-child {
-      border-bottom: none;
+      border-bottom: 0;
     }
 
     .report-meta {
@@ -595,234 +542,181 @@
 
       gap: 10px;
 
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
 
     .report-number {
+      color: #8a8e95;
       font-size: 11px;
-      font-weight: 900;
+      font-weight: 800;
     }
 
     .report-date {
-      color: #aaa;
-
+      color: #a0a4aa;
       font-size: 10px;
       white-space: nowrap;
     }
 
     .report-content {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
+      color: #34373b;
 
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.65;
+
+      white-space: pre-wrap;
+      word-break: break-word;
     }
 
-    .empty {
-      padding: 30px 15px;
-
-      color: #aaa;
+    .empty-reports {
+      padding: 30px 18px;
 
       text-align: center;
 
+      color: #9a9ea5;
       font-size: 12px;
       line-height: 1.6;
     }
 
-
-    /* =========================
-       Footer
-    ========================= */
-
-    .footer {
-      margin-top: 18px;
+    .loading {
+      padding: 24px;
 
       text-align: center;
 
-      color: #999;
-
-      font-size: 11px;
-      line-height: 1.6;
+      color: #9a9ea5;
+      font-size: 12px;
     }
 
-
     /* =========================
-       Animation
+       FOOTER
     ========================= */
 
-    @keyframes pop {
-      0% {
-        transform: scale(0.5) rotate(-10deg);
-      }
+    footer {
+      margin-top: 26px;
 
-      70% {
-        transform: scale(1.1) rotate(3deg);
-      }
+      text-align: center;
 
-      100% {
-        transform: scale(1) rotate(0);
-      }
+      color: #a0a4aa;
+
+      font-size: 10px;
+      line-height: 1.7;
     }
 
-
     /* =========================
-       Mobile
+       MOBILE
     ========================= */
 
-    @media (max-width: 480px) {
-
-      body {
-        padding: 18px 14px;
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, 560px);
+        padding-top: 24px;
+        padding-bottom: 30px;
       }
 
-      .card {
-        padding: 22px 18px;
-
+      .main-card {
+        padding: 20px;
         border-radius: 18px;
-
-        box-shadow:
-          5px 5px 0 #171717;
       }
 
       .title {
         font-size: 34px;
       }
 
+      .warning {
+        padding: 13px;
+      }
+
       textarea {
-        min-height: 200px;
+        min-height: 210px;
       }
 
-      .help-card {
-        padding: 18px;
+      .reports-list {
+        max-height: 430px;
       }
+    }
 
-      .reports-heading h2 {
-        font-size: 16px;
-      }
-
-      .realtime {
-        font-size: 8px;
-      }
-
-      .report-list {
-        max-height: 480px;
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="container">
 
-  <main class="wrapper">
-
-    <!-- =========================
-         Header
-    ========================== -->
-
-    <header class="top">
-
-      <div class="badge">
-        🚨 YH REPORT CENTER
-      </div>
+    <header>
+      <div class="badge">🚨 YH REPORT CENTER</div>
 
       <h1 class="title">
         용현이 <span>신고하기</span>
       </h1>
 
       <p class="subtitle">
-        용현이의 만행(?)을 목격하셨나요?<br />
-        여러분의 소중한 제보를 기다리고 있습니다.
+        용현이에게 하고 싶은 말을 자유롭게 남겨보세요.<br />
+        물론 실제 신고센터는 아닙니다.
       </p>
-
     </header>
 
+    <main class="main-card">
 
-    <!-- =========================
-         Main Card
-    ========================== -->
-
-    <section class="card">
-
-      <!-- Warning -->
-
+      <!-- 신고 안내 -->
       <div class="warning">
+        <div class="warning-icon">⚠️</div>
 
-        <div class="warning-icon">
-          ⚠️
+        <div class="warning-content">
+          <div class="warning-title">주의사항</div>
+
+          <div class="warning-text">
+            장난으로 운영되는 사이트입니다.
+            너무 진지하게 받아들이지 마세요.
+          </div>
         </div>
-
-        <div>
-          <strong>주의사항</strong><br />
-          장난으로 운영되는 사이트입니다.
-          너무 진지하게 받아들이지 마세요.
-        </div>
-
       </div>
 
+      <!-- 신고 폼 -->
+      <section id="reportFormSection">
 
-      <!-- Form -->
-
-      <form id="reportForm">
-
-        <div class="section-title">
-
-          <strong>
-            📋 신고 내용
-          </strong>
-
-          <span
-            class="counter"
-            id="counter"
-          >
-            0 / 2000
-          </span>
-
+        <div class="form-header">
+          <div class="form-title">📋 신고 내용</div>
+          <div class="counter">
+            <span id="charCount">0</span> / 2000
+          </div>
         </div>
 
+        <form id="reportForm">
 
-        <textarea
-          id="report"
-          name="report"
-          maxlength="2000"
-          placeholder="예시)
+          <textarea
+            id="reportContent"
+            maxlength="2000"
+            placeholder="예시)
 - 용현이가 또 약속시간에 늦었습니다.
 - 용현이가 제 간식을 먹었습니다.
 - 그냥 신고하고 싶었습니다."
-          required
-        ></textarea>
+            required
+          ></textarea>
 
+          <button
+            type="submit"
+            class="submit-button"
+            id="submitButton"
+          >
+            🚨 용현이 신고 접수하기
+          </button>
 
-        <button
-          type="submit"
-          class="submit-button"
-          id="submitButton"
-        >
-          🚨 용현이 신고 접수하기
-        </button>
+        </form>
+      </section>
 
+      <!-- 접수 완료 -->
+      <section class="success" id="successSection">
 
-        <div
-          id="formMessage"
-          class="message"
-        ></div>
+        <div class="success-icon">✓</div>
 
-      </form>
-
-
-      <!-- Success -->
-
-      <div
-        class="success"
-        id="successMessage"
-      >
-
-        <div class="success-icon">
-          ✓
-        </div>
-
-        <h2>
-          신고 접수 완료!
-        </h2>
+        <h2>신고 접수 완료!</h2>
 
         <p>
           소중한 신고가 정상적으로 접수되었습니다.<br />
@@ -830,467 +724,312 @@
         </p>
 
         <button
+          type="button"
           class="back-button"
           id="backButton"
-          type="button"
         >
-          다시 신고하기
+          다른 신고 작성하기
         </button>
 
-      </div>
+      </section>
 
-
-      <!-- =========================
-           1303
-      ========================== -->
-
+      <!-- 국방헬프콜 -->
       <div class="help-card">
-
-        <div class="help-top">
-
-          <div class="help-icon">
-            ☎
-          </div>
-
-          <div>
-            <h2 class="help-title">
-              국방헬프콜 1303
-            </h2>
-          </div>
-
+        <div class="help-title">
+          🪖 실제 신고·상담이 필요하다면
         </div>
 
-        <p class="help-description">
-          실제 군 생활에서 어려움이 있거나
-          사건·사고, 군 범죄·성폭력 등
-          상담 및 신고가 필요한 경우에는
-          국방헬프콜 1303을 이용하세요.
+        <p class="help-text">
+          실제 군 생활에서 어려움이 있거나 사건·사고,
+          군 범죄·성폭력 등 상담 및 신고가 필요한 경우에는
+          <span class="help-number">국방헬프콜 1303</span>을 이용하세요.
         </p>
-
-        <a
-          href="tel:1303"
-          class="help-button"
-        >
-          ☎ 1303 전화하기
-        </a>
-
       </div>
 
-
-      <!-- =========================
-           Reports
-      ========================== -->
-
+      <!-- 누적 신고 -->
       <section class="reports-section">
 
         <div class="reports-heading">
 
-          <div class="reports-heading-left">
+          <div class="reports-title-wrap">
+            <h2 class="reports-title">📢 누적 신고 내역</h2>
 
-            <h2>
-              📢 누적 신고 내역
-            </h2>
-
-            <span
-              class="realtime"
-              id="realtimeStatus"
-            >
-              <span class="realtime-dot"></span>
-              연결 중
-            </span>
-
+            <div class="realtime-status" id="realtimeStatus">
+              <span class="status-dot" id="statusDot"></span>
+              <span id="statusText">연결 중</span>
+            </div>
           </div>
 
-          <span
-            class="report-count"
-            id="reportCount"
-          >
-            0
-          </span>
+          <span class="report-count" id="reportCount">0</span>
 
         </div>
-
 
         <div class="reports-box">
 
           <div class="reports-header">
-            ALL REPORTS
+            <span class="reports-header-title">
+              ALL REPORTS
+            </span>
+
+            <span class="reports-header-count" id="reportsHeaderCount">
+              0 REPORTS
+            </span>
           </div>
 
-          <div
-            class="report-list"
-            id="reportList"
-          >
-
-            <div class="empty">
-              신고 내역을 불러오는 중입니다...
+          <div class="reports-list" id="reportsList">
+            <div class="loading">
+              신고 내역을 불러오는 중...
             </div>
-
           </div>
 
         </div>
 
       </section>
 
-    </section>
+    </main>
 
-
-    <footer class="footer">
-      YH Report Center © 2026<br />
-      모든 신고는 매우 진지하게(?) 검토됩니다.
+    <footer>
+      <div>YH Report Center © 2026</div>
+      <div>모든 신고는 매우 진지하게(?) 검토됩니다.</div>
     </footer>
 
-  </main>
-
+  </div>
 
   <script>
-
     /* =========================
-       Supabase
-    ========================== */
+       SUPABASE
+    ========================= */
 
     const SUPABASE_URL =
       "https://tmzzohugipsqiibiyqrj.supabase.co";
 
-    const SUPABASE_KEY =
+    const SUPABASE_ANON_KEY =
       "sb_publishable_xx5WBzmOhON3U-vNG1WizQ_-JcC1f3f";
 
-
-    const {
-      createClient
-    } = window.supabase;
-
-
     const supabaseClient =
-      createClient(
+      window.supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_KEY
+        SUPABASE_ANON_KEY
       );
+
+    const TABLE_NAME = "yh_reports";
 
 
     /* =========================
-       Elements
-    ========================== */
+       ELEMENTS
+    ========================= */
 
-    const form =
-      document.getElementById(
-        "reportForm"
-      );
+    const reportForm =
+      document.getElementById("reportForm");
 
-    const textarea =
-      document.getElementById(
-        "report"
-      );
+    const reportContent =
+      document.getElementById("reportContent");
 
-    const counter =
-      document.getElementById(
-        "counter"
-      );
+    const charCount =
+      document.getElementById("charCount");
 
     const submitButton =
-      document.getElementById(
-        "submitButton"
-      );
+      document.getElementById("submitButton");
 
-    const formMessage =
-      document.getElementById(
-        "formMessage"
-      );
+    const reportFormSection =
+      document.getElementById("reportFormSection");
 
-    const successMessage =
-      document.getElementById(
-        "successMessage"
-      );
+    const successSection =
+      document.getElementById("successSection");
 
     const backButton =
-      document.getElementById(
-        "backButton"
-      );
+      document.getElementById("backButton");
 
-    const reportList =
-      document.getElementById(
-        "reportList"
-      );
+    const reportsList =
+      document.getElementById("reportsList");
 
     const reportCount =
-      document.getElementById(
-        "reportCount"
-      );
+      document.getElementById("reportCount");
 
-    const realtimeStatus =
-      document.getElementById(
-        "realtimeStatus"
-      );
+    const reportsHeaderCount =
+      document.getElementById("reportsHeaderCount");
 
+    const statusDot =
+      document.getElementById("statusDot");
 
-    /* =========================
-       Character Count
-    ========================== */
-
-    textarea.addEventListener(
-      "input",
-      () => {
-
-        counter.textContent =
-          `${textarea.value.length} / 2000`;
-
-      }
-    );
+    const statusText =
+      document.getElementById("statusText");
 
 
     /* =========================
-       HTML Escape
-    ========================== */
+       CHARACTER COUNT
+    ========================= */
 
-    function escapeHTML(value) {
+    reportContent.addEventListener("input", () => {
+      charCount.textContent =
+        reportContent.value.length;
+    });
 
+
+    /* =========================
+       HTML ESCAPE
+    ========================= */
+
+    function escapeHtml(value) {
       return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
     }
 
 
     /* =========================
-       Date
-    ========================== */
+       DATE FORMAT
+    ========================= */
 
-    function formatKST(
-      dateString
-    ) {
+    function formatDate(dateString) {
+      const date = new Date(dateString);
 
-      const date =
-        new Date(dateString);
-
-      return new Intl.DateTimeFormat(
-        "ko-KR",
-        {
-          timeZone: "Asia/Seoul",
-
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-
-          hour: "2-digit",
-          minute: "2-digit",
-
-          hour12: false
-        }
-      ).format(date);
-
+      return new Intl.DateTimeFormat("ko-KR", {
+        timeZone: "Asia/Seoul",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).format(date);
     }
 
 
     /* =========================
-       Message
-    ========================== */
-
-    function showMessage(
-      text,
-      type
-    ) {
-
-      formMessage.textContent =
-        text;
-
-      formMessage.className =
-        `message ${type}`;
-
-    }
-
-
-    function hideMessage() {
-
-      formMessage.textContent =
-        "";
-
-      formMessage.className =
-        "message";
-
-    }
-
-
-    /* =========================
-       Load Reports
-    ========================== */
+       LOAD REPORTS
+    ========================= */
 
     async function loadReports() {
-
       const {
         data,
         error
       } = await supabaseClient
-        .from("yh_reports")
-        .select(
-          "id, content, created_at"
-        )
-        .order(
-          "created_at",
-          {
-            ascending: false
-          }
-        );
-
+        .from(TABLE_NAME)
+        .select("id, content, created_at")
+        .order("created_at", {
+          ascending: false
+        });
 
       if (error) {
-
         console.error(
           "신고 내역 불러오기 실패:",
           error
         );
 
-        reportList.innerHTML = `
-          <div class="empty">
-            신고 내역을 불러오지 못했습니다.
+        reportsList.innerHTML = `
+          <div class="empty-reports">
+            신고 내역을 불러오지 못했습니다.<br />
+            잠시 후 다시 시도해주세요.
           </div>
         `;
 
         return;
-
       }
 
-
-      renderReports(
-        data || []
-      );
-
+      renderReports(data || []);
     }
 
 
     /* =========================
-       Render Reports
-    ========================== */
+       RENDER REPORTS
+    ========================= */
 
-    function renderReports(
-      reports
-    ) {
+    function renderReports(reports) {
 
-      reportCount.textContent =
-        reports.length;
+      const total = reports.length;
 
+      reportCount.textContent = total;
 
-      if (
-        reports.length === 0
-      ) {
+      reportsHeaderCount.textContent =
+        `${total} REPORT${total === 1 ? "" : "S"}`;
 
-        reportList.innerHTML = `
-          <div class="empty">
+      if (total === 0) {
+        reportsList.innerHTML = `
+          <div class="empty-reports">
             아직 접수된 신고가 없습니다.<br />
-            첫 번째 신고자가 되어보세요.
+            첫 번째 신고자가 되어보세요. 👀
           </div>
         `;
 
         return;
-
       }
 
-
-      reportList.innerHTML =
+      reportsList.innerHTML =
         reports
-          .map(
-            (
-              report,
-              index
-            ) => {
+          .map((report, index) => {
 
-              return `
-                <article class="report-item">
+            const number =
+              total - index;
 
-                  <div class="report-meta">
+            return `
+              <article class="report-item">
 
-                    <span class="report-number">
-                      #${reports.length - index}
-                    </span>
+                <div class="report-meta">
 
-                    <span class="report-date">
-                      ${escapeHTML(
-                        formatKST(
-                          report.created_at
-                        )
-                      )}
-                    </span>
+                  <span class="report-number">
+                    #${number}
+                  </span>
 
-                  </div>
-
-                  <div class="report-content">
-                    ${escapeHTML(
-                      report.content
+                  <span class="report-date">
+                    ${escapeHtml(
+                      formatDate(report.created_at)
                     )}
-                  </div>
+                  </span>
 
-                </article>
-              `;
+                </div>
 
-            }
-          )
+                <div class="report-content">
+                  ${escapeHtml(report.content)}
+                </div>
+
+              </article>
+            `;
+          })
           .join("");
-
     }
 
 
     /* =========================
-       Submit
-    ========================== */
+       SUBMIT REPORT
+    ========================= */
 
-    form.addEventListener(
+    reportForm.addEventListener(
       "submit",
       async (event) => {
 
         event.preventDefault();
 
-
         const content =
-          textarea.value.trim();
-
+          reportContent.value.trim();
 
         if (!content) {
-
-          showMessage(
-            "🚨 신고 내용을 입력해주세요.",
-            "error"
-          );
-
-          textarea.focus();
-
+          reportContent.focus();
           return;
-
         }
 
-
-        if (
-          content.length > 2000
-        ) {
-
-          showMessage(
-            "신고 내용은 2000자 이하로 작성해주세요.",
-            "error"
+        if (content.length > 2000) {
+          alert(
+            "신고 내용은 2000자 이내로 작성해주세요."
           );
 
           return;
-
         }
 
-
-        submitButton.disabled =
-          true;
-
+        submitButton.disabled = true;
         submitButton.textContent =
-          "⏳ 신고 접수 중...";
-
-        hideMessage();
-
+          "🚨 접수하는 중...";
 
         const {
           error
         } = await supabaseClient
-          .from("yh_reports")
+          .from(TABLE_NAME)
           .insert({
-            content: content
+            content
           });
-
 
         if (error) {
 
@@ -1299,159 +1038,101 @@
             error
           );
 
-          showMessage(
-            "신고 접수에 실패했습니다. 잠시 후 다시 시도해주세요.",
-            "error"
+          alert(
+            "신고 접수에 실패했습니다.\n잠시 후 다시 시도해주세요."
           );
 
-          submitButton.disabled =
-            false;
-
+          submitButton.disabled = false;
           submitButton.textContent =
             "🚨 용현이 신고 접수하기";
 
           return;
-
         }
 
+        reportContent.value = "";
+        charCount.textContent = "0";
 
-        /* 입력 초기화 */
+        reportFormSection.style.display = "none";
+        successSection.classList.add("show");
 
-        textarea.value =
-          "";
-
-        counter.textContent =
-          "0 / 2000";
-
-
-        /* 성공 화면 */
-
-        form.style.display =
-          "none";
-
-        successMessage.style.display =
-          "block";
-
-
-        submitButton.disabled =
-          false;
-
+        submitButton.disabled = false;
         submitButton.textContent =
           "🚨 용현이 신고 접수하기";
 
-
-        /* 목록 즉시 갱신 */
-
         await loadReports();
-
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
       }
     );
 
 
     /* =========================
-       Back
-    ========================== */
+       BACK BUTTON
+    ========================= */
 
     backButton.addEventListener(
       "click",
       () => {
 
-        successMessage.style.display =
-          "none";
+        successSection.classList.remove("show");
 
-        form.style.display =
+        reportFormSection.style.display =
           "block";
 
-        hideMessage();
-
-        textarea.focus();
-
+        reportContent.focus();
       }
     );
 
 
     /* =========================
-       Realtime
-    ========================== */
+       REALTIME
+    ========================= */
 
-    function setupRealtime() {
-
+    const realtimeChannel =
       supabaseClient
-        .channel(
-          "yh-reports-realtime"
-        )
+        .channel("yh-reports-realtime")
+
         .on(
           "postgres_changes",
           {
             event: "INSERT",
             schema: "public",
-            table: "yh_reports"
+            table: TABLE_NAME
           },
           async () => {
-
             await loadReports();
-
           }
         )
+
         .subscribe(
           (status) => {
 
-            if (
-              status ===
-              "SUBSCRIBED"
-            ) {
+            if (status === "SUBSCRIBED") {
 
-              realtimeStatus
-                .classList
-                .add("connected");
+              statusDot.classList.add(
+                "connected"
+              );
 
-              realtimeStatus.innerHTML = `
-                <span class="realtime-dot"></span>
-                실시간 연결됨
-              `;
+              statusText.textContent =
+                "실시간 연결됨";
 
             } else {
 
-              realtimeStatus
-                .classList
-                .remove("connected");
+              statusDot.classList.remove(
+                "connected"
+              );
 
-              realtimeStatus.innerHTML = `
-                <span class="realtime-dot"></span>
-                연결 중
-              `;
-
+              statusText.textContent =
+                "연결 중";
             }
-
           }
         );
 
-    }
-
 
     /* =========================
-       Initialize
-    ========================== */
+       INITIAL LOAD
+    ========================= */
 
-    async function init() {
-
-      await loadReports();
-
-      setupRealtime();
-
-    }
-
-
-    init();
+    loadReports();
 
   </script>
-
 </body>
 </html>
-
