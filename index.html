@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +13,7 @@
 
   <meta
     name="description"
-    content="용현이 신고센터 - 여러분의 제보를 접수합니다."
+    content="용현이 신고센터 - 용현이의 만행을 신고해주세요."
   >
 
   <!-- Supabase -->
@@ -40,16 +41,16 @@
 
       background:
         radial-gradient(
-          circle at top left,
-          #fff8c7 0%,
-          transparent 35%
+          circle at 10% 0%,
+          #fff3a8 0%,
+          transparent 32%
         ),
         radial-gradient(
-          circle at bottom right,
-          #e9f4ff 0%,
+          circle at 100% 100%,
+          #e5f1ff 0%,
           transparent 35%
         ),
-        #f6f7f9;
+        #f5f5f5;
 
       color: #171717;
 
@@ -59,6 +60,11 @@
     button,
     textarea {
       font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     /* ========================================
@@ -73,7 +79,7 @@
       padding:
         42px
         0
-        70px;
+        65px;
     }
 
     /* ========================================
@@ -81,49 +87,63 @@
     ======================================== */
 
     .header {
-      position: relative;
-
-      margin-bottom: 28px;
-
       text-align: center;
+
+      margin-bottom: 30px;
     }
 
     .header-badge {
       display: inline-block;
 
+      padding:
+        7px
+        12px;
+
       background: #171717;
+
       color: #ffe15c;
 
-      border: 2px solid #171717;
-
-      padding: 7px 12px;
+      border:
+        2px
+        solid
+        #171717;
 
       border-radius: 999px;
 
       font-size: 11px;
-      font-weight: 900;
+
+      font-weight: 1000;
 
       letter-spacing: 1px;
 
       box-shadow:
-        3px 3px 0 #ffe15c;
+        3px
+        3px
+        0
+        #ffe15c;
     }
 
     .header h1 {
       margin:
         18px
         0
-        8px;
+        9px;
 
-      font-size: clamp(38px, 11vw, 58px);
+      font-size:
+        clamp(
+          38px,
+          11vw,
+          58px
+        );
+
+      line-height: 0.95;
 
       font-weight: 1000;
 
       letter-spacing: -4px;
 
-      line-height: 0.95;
-
-      transform: rotate(-1deg);
+      transform:
+        rotate(-1deg);
     }
 
     .header p {
@@ -135,7 +155,7 @@
 
       font-weight: 700;
 
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ========================================
@@ -157,8 +177,15 @@
       margin-bottom: 18px;
 
       box-shadow:
-        6px 6px 0 #171717;
+        6px
+        6px
+        0
+        #171717;
     }
+
+    /* ========================================
+       CARD TITLE
+    ======================================== */
 
     .card-title {
       display: flex;
@@ -169,7 +196,7 @@
 
       gap: 12px;
 
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
 
     .card-title h2 {
@@ -189,9 +216,9 @@
 
       justify-content: center;
 
-      padding: 5px 8px;
-
-      border-radius: 7px;
+      padding:
+        5px
+        8px;
 
       background: #ffe15c;
 
@@ -200,13 +227,93 @@
         solid
         #171717;
 
+      border-radius: 7px;
+
       font-size: 10px;
 
       font-weight: 1000;
+
+      white-space: nowrap;
     }
 
     /* ========================================
-       FORM
+       JOKE NOTICE
+    ======================================== */
+
+    .joke-notice {
+      margin:
+        0
+        0
+        14px;
+
+      padding:
+        11px
+        13px;
+
+      background: #fff8d8;
+
+      border:
+        1.5px
+        solid
+        #171717;
+
+      border-radius: 10px;
+
+      color: #555;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      line-height: 1.7;
+    }
+
+    .joke-notice strong {
+      color: #171717;
+    }
+
+    /* ========================================
+       FUNNY EXAMPLES
+    ======================================== */
+
+    .example-box {
+      margin:
+        0
+        0
+        13px;
+
+      padding:
+        11px
+        13px;
+
+      background: #f7f7f7;
+
+      border:
+        1.5px
+        dashed
+        #aaa;
+
+      border-radius: 10px;
+
+      color: #777;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+    }
+
+    .example-box strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: #333;
+
+      font-size: 11px;
+    }
+
+    /* ========================================
+       TEXTAREA
     ======================================== */
 
     textarea {
@@ -214,11 +321,15 @@
 
       width: 100%;
 
-      min-height: 170px;
+      min-height: 175px;
 
       resize: vertical;
 
       padding: 16px;
+
+      background: #fafafa;
+
+      color: #171717;
 
       border:
         2px
@@ -226,10 +337,6 @@
         #171717;
 
       border-radius: 12px;
-
-      background: #fafafa;
-
-      color: #171717;
 
       outline: none;
 
@@ -250,8 +357,15 @@
       background: #fffef0;
 
       box-shadow:
-        4px 4px 0 #ffe15c;
+        4px
+        4px
+        0
+        #ffe15c;
     }
+
+    /* ========================================
+       FORM BOTTOM
+    ======================================== */
 
     .form-bottom {
       display: flex;
@@ -266,7 +380,7 @@
     }
 
     .counter {
-      color: #888;
+      color: #999;
 
       font-size: 11px;
 
@@ -289,7 +403,9 @@
 
       border-radius: 10px;
 
-      padding: 11px 16px;
+      padding:
+        11px
+        17px;
 
       font-size: 13px;
 
@@ -298,7 +414,10 @@
       cursor: pointer;
 
       box-shadow:
-        3px 3px 0 #171717;
+        3px
+        3px
+        0
+        #171717;
 
       transition:
         transform 0.1s,
@@ -316,7 +435,10 @@
         );
 
       box-shadow:
-        2px 2px 0 #171717;
+        2px
+        2px
+        0
+        #171717;
     }
 
     .submit-button:active {
@@ -335,13 +457,10 @@
       cursor: not-allowed;
 
       transform: none;
-
-      box-shadow:
-        3px 3px 0 #171717;
     }
 
     /* ========================================
-       MESSAGE
+       MESSAGES
     ======================================== */
 
     .message {
@@ -349,7 +468,9 @@
 
       margin-top: 13px;
 
-      padding: 11px 13px;
+      padding:
+        11px
+        13px;
 
       border:
         2px
@@ -362,7 +483,7 @@
 
       font-weight: 800;
 
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .message.show {
@@ -414,7 +535,9 @@
 
       height: 27px;
 
-      padding: 0 8px;
+      padding:
+        0
+        8px;
 
       background: #ffe15c;
 
@@ -470,19 +593,25 @@
 
     .report.new-report {
       animation:
-        newReport 0.65s ease;
+        newReport 0.7s ease;
     }
 
     @keyframes newReport {
+
       0% {
         background: #ffe15c;
-        transform: translateY(-5px);
+
+        transform:
+          translateY(-6px);
       }
 
       100% {
         background: #fafafa;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
       }
+
     }
 
     .report-top {
@@ -530,11 +659,13 @@
     }
 
     /* ========================================
-       EMPTY / LOADING
+       LOADING / EMPTY
     ======================================== */
 
     .status {
-      padding: 28px 10px;
+      padding:
+        28px
+        10px;
 
       text-align: center;
 
@@ -560,7 +691,7 @@
 
       margin-top: 13px;
 
-      color: #999;
+      color: #aaa;
 
       font-size: 10px;
 
@@ -569,6 +700,7 @@
 
     .status-dot {
       width: 7px;
+
       height: 7px;
 
       border-radius: 50%;
@@ -580,7 +712,10 @@
       background: #42b35a;
 
       box-shadow:
-        0 0 0 3px
+        0
+        0
+        0
+        3px
         rgba(
           66,
           179,
@@ -593,106 +728,154 @@
       background: #e05252;
     }
 
-       /* ========================================
-       국방헬프콜 1303
+    /* ========================================
+       1303 HELP BOX
     ======================================== */
-    
+
     .help-box {
       display: flex;
+
       align-items: flex-start;
+
       gap: 15px;
-    
+
       background: #eaf4ff;
-    
-      border: 2px solid #171717;
+
+      border:
+        2px
+        solid
+        #171717;
+
       border-radius: 18px;
-    
+
       padding: 20px;
-    
+
       margin-bottom: 18px;
-    
-      box-shadow: 6px 6px 0 #171717;
+
+      box-shadow:
+        6px
+        6px
+        0
+        #171717;
     }
-    
+
     .help-icon {
       flex-shrink: 0;
-    
+
       width: 42px;
+
       height: 42px;
-    
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-    
+
       background: #fff;
-    
-      border: 2px solid #171717;
+
+      border:
+        2px
+        solid
+        #171717;
+
       border-radius: 11px;
-    
+
       font-size: 20px;
     }
-    
+
     .help-content {
       min-width: 0;
+
       flex: 1;
     }
-    
+
     .help-title {
       margin-bottom: 7px;
-    
+
       color: #171717;
-    
+
       font-size: 17px;
+
       font-weight: 1000;
-    
+
       letter-spacing: -0.5px;
     }
-    
+
     .help-content p {
-      margin: 0 0 13px;
-    
+      margin:
+        0
+        0
+        13px;
+
       color: #555;
-    
+
       font-size: 12px;
+
       line-height: 1.7;
     }
-    
+
     .help-button {
       display: inline-flex;
-    
+
       align-items: center;
+
       justify-content: center;
-    
-      padding: 9px 13px;
-    
+
+      padding:
+        9px
+        13px;
+
       background: #fff;
-    
+
       color: #171717;
-    
-      border: 2px solid #171717;
+
+      border:
+        2px
+        solid
+        #171717;
+
       border-radius: 9px;
-    
+
       font-size: 12px;
+
       font-weight: 1000;
-    
-      box-shadow: 3px 3px 0 #171717;
-    
+
+      box-shadow:
+        3px
+        3px
+        0
+        #171717;
+
       transition:
         transform 0.1s,
         box-shadow 0.1s;
     }
-    
+
     .help-button:hover {
-      transform: translate(1px, 1px);
-    
-      box-shadow: 2px 2px 0 #171717;
+      transform:
+        translate(
+          1px,
+          1px
+        );
+
+      box-shadow:
+        2px
+        2px
+        0
+        #171717;
     }
-    
+
     .help-button:active {
-      transform: translate(3px, 3px);
-    
+      transform:
+        translate(
+          3px,
+          3px
+        );
+
       box-shadow: none;
     }
+
     /* ========================================
        FOOTER
     ======================================== */
@@ -732,7 +915,10 @@
         padding: 18px;
 
         box-shadow:
-          5px 5px 0 #171717;
+          5px
+          5px
+          0
+          #171717;
       }
 
       .form-bottom {
@@ -758,21 +944,31 @@
       .report-date {
         font-size: 9px;
       }
+
       .help-box {
         padding: 17px;
+
         gap: 12px;
+
+        box-shadow:
+          5px
+          5px
+          0
+          #171717;
       }
-    
+
       .help-icon {
         width: 38px;
+
         height: 38px;
-    
+
         font-size: 18px;
       }
-    
+
       .help-title {
         font-size: 16px;
       }
+
     }
   </style>
 </head>
@@ -822,18 +1018,49 @@
 
       </div>
 
+
+      <!-- 장난용 사이트 안내 -->
+
+      <div class="joke-notice">
+        ⚠️ <strong>잠깐!</strong>
+        이 사이트는 용현이를 놀리기 위해 장난으로 만든
+        비공식 신고 사이트입니다.
+        실제 신고기관이나 민원 접수 창구가 아니며,
+        작성된 내용은 재미를 위한 용도로만 이용해주세요.
+      </div>
+
+
+      <!-- 신고 예시 -->
+
+      <div class="example-box">
+
+        <strong>
+          💡 이런 것도 신고할 수 있습니다
+        </strong>
+
+        • 또 지각함<br>
+        • 갑자기 사라짐<br>
+        • 단체 채팅방에서 이상한 말을 함<br>
+        • 간식을 혼자 먹음<br>
+        • 내 말을 안 들어줌<br>
+        • 괜히 킹받게 함<br>
+        • 기타 용현이의 수상한 행동
+
+      </div>
+
+
       <textarea
         id="reportInput"
         maxlength="2000"
-        placeholder="용현이가 무엇을 했는지 작성해주세요.
+        placeholder="용현이가 무엇을 했는지 자유롭게 작성해주세요.
 
 예시)
-• 또 지각함
-• 갑자기 사라짐
-• 단체 채팅방에서 이상한 말을 함
-• 간식을 혼자 먹음
-• 기타 신고할 사항..."
+오늘 용현이가 점심시간에
+내 간식을 허락도 없이 먹었습니다.
+
+이건 신고해야 합니다."
       ></textarea>
+
 
       <div class="form-bottom">
 
@@ -852,14 +1079,16 @@
 
       </div>
 
+
       <div
         class="message success"
         id="successMessage"
       >
-        ✅ 신고 접수 완료!
-        용현이에게 전달될 예정입니다.
-        아마도요.
+        ✅ 신고 접수 완료!<br>
+        소중한(?) 제보가 정상적으로 접수되었습니다.
+        용현이에게 전달될 예정입니다. 아마도요.
       </div>
+
 
       <div
         class="message error"
@@ -893,14 +1122,18 @@
 
       </div>
 
+
       <div
         class="reports"
         id="reports"
       >
+
         <div class="status">
           신고 내역을 불러오는 중...
         </div>
+
       </div>
+
 
       <div class="realtime-status">
 
@@ -918,38 +1151,38 @@
     </section>
 
 
-        <!-- ======================================
+    <!-- ======================================
          1303
     ======================================= -->
-    
+
     <section class="help-box">
-    
+
       <div class="help-icon">
         📞
       </div>
-    
+
       <div class="help-content">
-    
+
         <div class="help-title">
           국방헬프콜 1303
         </div>
-    
+
         <p>
           실제 군 생활에서 어려움이 있거나
           사건·사고, 군 범죄·성폭력 등
-          상담 및 신고가 필요한 경우
-          국방헬프콜 1303을 이용하세요.
+          상담 및 신고가 필요한 경우에는
+          국방헬프콜 <strong>1303</strong>을 이용하세요.
         </p>
-    
+
         <a
           href="tel:1303"
           class="help-button"
         >
           ☎ 1303 전화하기
         </a>
-    
+
       </div>
-    
+
     </section>
 
 
@@ -958,9 +1191,12 @@
     ======================================= -->
 
     <footer>
+
       YH REPORT CENTER
       <br>
-      This is an unofficial entertainment website.
+
+      본 사이트는 재미를 위한 비공식 사이트입니다.
+
     </footer>
 
   </div>
@@ -980,7 +1216,7 @@
 
 
     /* ==========================================
-       INITIALIZE
+       INITIALIZE SUPABASE
     ========================================== */
 
     const {
@@ -1091,7 +1327,7 @@
 
 
     /* ==========================================
-       DATE FORMAT
+       FORMAT DATE - KST
     ========================================== */
 
     function formatDate(
@@ -1130,7 +1366,7 @@
 
 
     /* ==========================================
-       CREATE REPORT ELEMENT
+       CREATE REPORT
     ========================================== */
 
     function createReportElement(
@@ -1199,6 +1435,7 @@
         </div>
       `;
 
+
       const {
         data,
         error
@@ -1225,6 +1462,8 @@
         reports.innerHTML = `
           <div class="status">
             신고 내역을 불러오지 못했습니다.
+            <br>
+            Supabase 설정을 확인해주세요.
           </div>
         `;
 
@@ -1236,7 +1475,9 @@
       }
 
 
-      renderReports(data);
+      renderReports(
+        data
+      );
 
     }
 
@@ -1263,7 +1504,7 @@
           <div class="status">
             아직 접수된 신고가 없습니다.
             <br>
-            첫 번째 신고자가 되어보세요.
+            첫 번째 신고자가 되어보세요. 😎
           </div>
         `;
 
@@ -1323,7 +1564,7 @@
       if (!content) {
 
         errorMessage.textContent =
-          "❌ 신고 내용을 입력해주세요.";
+          "❌ 신고 내용을 먼저 작성해주세요.";
 
         errorMessage.classList.add(
           "show"
@@ -1362,7 +1603,6 @@
       try {
 
         const {
-          data,
           error
         } = await supabaseClient
           .from("yh_reports")
@@ -1371,9 +1611,7 @@
               content:
                 content
             }
-          ])
-          .select()
-          .single();
+          ]);
 
 
         if (error) {
@@ -1394,19 +1632,16 @@
         charCount.textContent =
           "0";
 
+
         successMessage.classList.add(
           "show"
         );
 
 
         /*
-         * Realtime이 연결되어 있다면
-         * INSERT 이벤트를 통해 자동으로
-         * 목록이 갱신된다.
-         *
-         * 따라서 여기서는 직접 append하지 않는다.
+         * 실제 목록 갱신은 Supabase
+         * Realtime INSERT 이벤트에서 처리한다.
          */
-
 
       } catch (error) {
 
@@ -1435,7 +1670,7 @@
 
 
     /* ==========================================
-       SUBMIT BUTTON
+       SUBMIT
     ========================================== */
 
     submitButton.addEventListener(
@@ -1476,120 +1711,114 @@
 
     function setupRealtime() {
 
-      const channel =
-        supabaseClient
-          .channel(
-            "yh-reports-realtime"
-          )
-          .on(
-            "postgres_changes",
-            {
-              event:
-                "INSERT",
+      supabaseClient
+        .channel(
+          "yh-reports-realtime"
+        )
+        .on(
+          "postgres_changes",
+          {
+            event:
+              "INSERT",
 
-              schema:
-                "public",
+            schema:
+              "public",
 
-              table:
-                "yh_reports"
-            },
-            payload => {
+            table:
+              "yh_reports"
+          },
+          payload => {
 
-              console.log(
-                "새 신고:",
-                payload.new
-              );
-
-
-              /*
-               * 현재 목록을 다시 조회한다.
-               *
-               * 단순히 payload를 추가하는 것보다
-               * 서버의 실제 데이터를 다시 읽어
-               * 목록 순서와 신고 번호를 정확하게 유지한다.
-               */
-
-              refreshAfterRealtime(
-                payload.new.id
-              );
-
-            }
-          )
-          .subscribe(
-            status => {
-
-              console.log(
-                "Realtime:",
-                status
-              );
+            console.log(
+              "새 신고 접수:",
+              payload.new
+            );
 
 
-              if (
-                status ===
-                "SUBSCRIBED"
-              ) {
+            /*
+             * 서버의 최신 목록을 다시 가져온다.
+             * 이렇게 하면 신고 번호와 최신순 정렬이
+             * 항상 정확하게 유지된다.
+             */
 
-                realtimeDot.className =
-                  "status-dot connected";
+            refreshAfterRealtime(
+              payload.new.id
+            );
 
-                realtimeText.textContent =
-                  "실시간 연결됨";
+          }
+        )
+        .subscribe(
+          status => {
 
-              }
-
-
-              if (
-                status ===
-                "CHANNEL_ERROR"
-              ) {
-
-                realtimeDot.className =
-                  "status-dot error";
-
-                realtimeText.textContent =
-                  "실시간 연결 오류";
-
-              }
+            console.log(
+              "Realtime 상태:",
+              status
+            );
 
 
-              if (
-                status ===
-                "TIMED_OUT"
-              ) {
+            if (
+              status ===
+              "SUBSCRIBED"
+            ) {
 
-                realtimeDot.className =
-                  "status-dot error";
+              realtimeDot.className =
+                "status-dot connected";
 
-                realtimeText.textContent =
-                  "실시간 연결 시간 초과";
-
-              }
-
-
-              if (
-                status ===
-                "CLOSED"
-              ) {
-
-                realtimeDot.className =
-                  "status-dot";
-
-                realtimeText.textContent =
-                  "실시간 연결 종료";
-
-              }
+              realtimeText.textContent =
+                "실시간 연결됨";
 
             }
-          );
 
 
-      return channel;
+            else if (
+              status ===
+              "CHANNEL_ERROR"
+            ) {
+
+              realtimeDot.className =
+                "status-dot error";
+
+              realtimeText.textContent =
+                "실시간 연결 오류";
+
+            }
+
+
+            else if (
+              status ===
+              "TIMED_OUT"
+            ) {
+
+              realtimeDot.className =
+                "status-dot error";
+
+              realtimeText.textContent =
+                "실시간 연결 시간 초과";
+
+            }
+
+
+            else if (
+              status ===
+              "CLOSED"
+            ) {
+
+              realtimeDot.className =
+                "status-dot";
+
+              realtimeText.textContent =
+                "실시간 연결 종료";
+
+            }
+
+          }
+        );
 
     }
 
 
     /* ==========================================
-       REFRESH AFTER REALTIME
+       REALTIME REFRESH
     ========================================== */
 
     async function refreshAfterRealtime(
@@ -1651,3 +1880,4 @@
 
 </body>
 </html>
+```
