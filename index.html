@@ -74,19 +74,26 @@
     header h1 {
       margin: 0;
       font-size: clamp(38px, 8vw, 72px);
-      line-height: 0.95;
+      line-height: 1;
       font-weight: 1000;
       letter-spacing: -4px;
     }
 
-    header h1 span {
+    header h1 .name {
       display: block;
     }
 
-    header h1 .sub {
+    header h1 .highlight {
+      display: inline-block;
       margin-top: 12px;
-      font-size: clamp(24px, 5vw, 42px);
+      padding: 4px 12px 7px;
+      background: #111;
+      color: #ffd400;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1;
       letter-spacing: -2px;
+      border-radius: 5px;
+      box-shadow: 6px 6px 0 rgba(17, 17, 17, 0.22);
     }
 
     .header-description {
@@ -488,6 +495,7 @@
     ========================== */
 
     @media (max-width: 600px) {
+
       .container {
         width: min(100% - 22px, 900px);
       }
@@ -498,6 +506,13 @@
 
       header h1 {
         letter-spacing: -3px;
+      }
+
+      header h1 .highlight {
+        margin-top: 10px;
+        padding: 4px 10px 6px;
+        font-size: clamp(27px, 9vw, 38px);
+        box-shadow: 4px 4px 0 rgba(17, 17, 17, 0.22);
       }
 
       main {
@@ -564,6 +579,7 @@
     }
 
     @media (max-width: 400px) {
+
       .section-title-left {
         flex-wrap: wrap;
       }
@@ -585,12 +601,12 @@
     <div class="container header-inner">
 
       <div class="badge">
-        🚨 YYH REPORT CENTER
+        🚨 YH REPORT CENTER
       </div>
 
       <h1>
-        <span>용현이</span>
-        <span class="sub">신고하기</span>
+        <span class="name">용현이</span>
+        <span class="highlight">신고하기</span>
       </h1>
 
       <p class="header-description">
@@ -612,6 +628,7 @@
       <section class="section">
 
         <div class="section-title">
+
           <div class="section-title-left">
             <h2>📝 신고 접수</h2>
           </div>
@@ -619,11 +636,18 @@
           <span class="count">
             ANONYMOUS
           </span>
+
         </div>
+
 
         <div class="report-box">
 
-          <div class="notice">⚠️ <strong>주의</strong><br>실제 신고기관이나 민원 접수 창구가 아니며, 작성된 내용은 재미를 위한 용도로만 이용해주세요.</div>
+          <div class="notice">
+            ⚠️ <strong>주의</strong><br>
+            실제 신고기관이나 민원 접수 창구가 아니며,
+            작성된 내용은 재미를 위한 용도로만 이용해주세요.
+          </div>
+
 
           <div class="examples">
 
@@ -632,16 +656,38 @@
             </div>
 
             <div class="examples-list">
-              <span class="example">또 지각함</span>
-              <span class="example">갑자기 사라짐</span>
-              <span class="example">이상한 말을 함</span>
-              <span class="example">전손 사고를 냄</span>
-              <span class="example">기타 용현이의 수상한 행동</span>
+
+              <span class="example">
+                또 지각함
+              </span>
+
+              <span class="example">
+                갑자기 사라짐
+              </span>
+
+              <span class="example">
+                이상한 말을 함
+              </span>
+
+              <span class="example">
+                전손 사고를 냄
+              </span>
+
+              <span class="example">
+                기타 용현이의 수상한 행동
+              </span>
+
             </div>
 
           </div>
 
-          <textarea id="reportContent" maxlength="2000" placeholder="용현이가 무엇을 했는지 자유롭게 작성해주세요. (최대 2000자)"></textarea>
+
+          <textarea
+            id="reportContent"
+            maxlength="2000"
+            placeholder="용현이가 무엇을 했는지 자유롭게 작성해주세요. (최대 2000자)"
+          ></textarea>
+
 
           <div class="textarea-footer">
 
@@ -655,6 +701,7 @@
 
           </div>
 
+
           <button
             type="button"
             id="submitBtn"
@@ -662,6 +709,7 @@
           >
             🚨 신고하기
           </button>
+
 
           <div
             id="message"
@@ -680,19 +728,42 @@
       <section class="section">
 
         <div class="section-title">
+
           <div class="section-title-left">
             <h2>☎ 국방헬프콜 1303</h2>
           </div>
+
         </div>
 
+
         <div class="help-box">
-          <div class="help-icon">☎</div>
-          <h2>국방헬프콜 1303</h2>
-          <p>실제 군 생활에서 어려움이 있거나 사건·사고, 군 범죄·성폭력 등 상담 및 신고가 필요한 경우에는 국방헬프콜 1303을 이용하세요.</p>
-          <a class="call-btn" href="tel:1303">☎ 1303 전화하기</a>
+
+          <div class="help-icon">
+            ☎
+          </div>
+
+          <h2>
+            국방헬프콜 1303
+          </h2>
+
+          <p>
+            실제 군 생활에서 어려움이 있거나
+            사건·사고, 군 범죄·성폭력 등
+            상담 및 신고가 필요한 경우에는
+            국방헬프콜 1303을 이용하세요.
+          </p>
+
+          <a
+            class="call-btn"
+            href="tel:1303"
+          >
+            ☎ 1303 전화하기
+          </a>
+
         </div>
 
       </section>
+
 
       <!-- =========================
            3. 누적 신고 내역
@@ -717,6 +788,7 @@
             </span>
 
           </div>
+
 
           <span
             id="reportCount"
@@ -763,9 +835,11 @@
   ========================== -->
 
   <footer>
+
     <div class="container">
       본 사이트는 재미를 위한 비공식 사이트입니다.
     </div>
+
   </footer>
 
 
@@ -781,9 +855,11 @@
     const SUPABASE_KEY =
       "sb_publishable_xx5WBzmOhON3U-vNG1WizQ_-JcC1f3f";
 
+
     const {
       createClient
     } = window.supabase;
+
 
     const supabaseClient =
       createClient(
@@ -926,7 +1002,6 @@
         `;
 
         return;
-
       }
 
 
