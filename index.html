@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-  />
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>용현이 신고하기</title>
 
   <meta
     name="description"
     content="용현이 신고센터 - 여러분의 제보를 접수합니다."
-  />
+  >
 
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -21,34 +21,39 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
+      margin: 0;
+      padding: 0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
-        Roboto,
         "Noto Sans KR",
         sans-serif;
 
       background:
         radial-gradient(
-          circle at 20% 10%,
-          rgba(255, 230, 80, 0.15),
-          transparent 30%
+          circle at top left,
+          #fff8c7 0%,
+          transparent 35%
         ),
-        linear-gradient(135deg, #111 0%, #181818 50%, #0d0d0d 100%);
+        radial-gradient(
+          circle at bottom right,
+          #e9f4ff 0%,
+          transparent 35%
+        ),
+        #f6f7f9;
 
-      color: #fff;
+      color: #171717;
+
       min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     button,
@@ -56,498 +61,741 @@
       font: inherit;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    /* ========================================
+       PAGE
+    ======================================== */
 
-    header {
-      background: #ffd400;
-      color: #111;
-      padding: 42px 20px 38px;
-      text-align: center;
+    .page {
+      width: min(620px, calc(100% - 28px));
 
-      border-bottom: 6px solid #111;
+      margin: 0 auto;
+
+      padding:
+        42px
+        0
+        70px;
     }
 
-    .badge {
+    /* ========================================
+       HEADER
+    ======================================== */
+
+    .header {
+      position: relative;
+
+      margin-bottom: 28px;
+
+      text-align: center;
+    }
+
+    .header-badge {
       display: inline-block;
 
-      background: #111;
-      color: #ffd400;
+      background: #171717;
+      color: #ffe15c;
 
-      font-size: 12px;
-      font-weight: 900;
+      border: 2px solid #171717;
 
       padding: 7px 12px;
+
       border-radius: 999px;
+
+      font-size: 11px;
+      font-weight: 900;
 
       letter-spacing: 1px;
 
-      margin-bottom: 15px;
+      box-shadow:
+        3px 3px 0 #ffe15c;
     }
 
-    header h1 {
-      font-size: clamp(32px, 8vw, 58px);
-      line-height: 1;
+    .header h1 {
+      margin:
+        18px
+        0
+        8px;
+
+      font-size: clamp(38px, 11vw, 58px);
 
       font-weight: 1000;
-      letter-spacing: -3px;
+
+      letter-spacing: -4px;
+
+      line-height: 0.95;
+
+      transform: rotate(-1deg);
     }
 
-    header p {
-      margin-top: 14px;
+    .header p {
+      margin: 0;
 
-      font-size: 15px;
+      color: #555;
+
+      font-size: 14px;
+
       font-weight: 700;
 
-      opacity: 0.8;
+      line-height: 1.6;
     }
 
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-      width: min(900px, calc(100% - 30px));
-      margin: 0 auto;
-
-      padding: 32px 0 60px;
-    }
-
-    /* =========================
+    /* ========================================
        CARD
-    ========================= */
+    ======================================== */
 
     .card {
-      background: #1d1d1d;
+      background: #fff;
 
-      border: 2px solid #333;
-      border-radius: 22px;
+      border:
+        2px
+        solid
+        #171717;
 
-      padding: 25px;
+      border-radius: 18px;
 
-      margin-bottom: 22px;
+      padding: 22px;
+
+      margin-bottom: 18px;
 
       box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.25);
+        6px 6px 0 #171717;
     }
 
     .card-title {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 12px;
 
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
 
     .card-title h2 {
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.7px;
+      margin: 0;
+
+      font-size: 18px;
+
+      font-weight: 1000;
+
+      letter-spacing: -0.8px;
     }
 
-    .card-title span {
-      color: #ffd400;
+    .card-label {
+      display: inline-flex;
 
-      font-size: 12px;
-      font-weight: 800;
+      align-items: center;
 
-      white-space: nowrap;
+      justify-content: center;
+
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background: #ffe15c;
+
+      border:
+        1.5px
+        solid
+        #171717;
+
+      font-size: 10px;
+
+      font-weight: 1000;
     }
 
-    /* =========================
+    /* ========================================
        FORM
-    ========================= */
+    ======================================== */
 
     textarea {
+      display: block;
+
       width: 100%;
-      min-height: 180px;
+
+      min-height: 170px;
 
       resize: vertical;
 
-      background: #111;
-      color: #fff;
+      padding: 16px;
 
-      border: 2px solid #333;
-      border-radius: 16px;
+      border:
+        2px
+        solid
+        #171717;
 
-      padding: 18px;
+      border-radius: 12px;
+
+      background: #fafafa;
+
+      color: #171717;
 
       outline: none;
 
-      font-size: 15px;
+      font-size: 14px;
+
       line-height: 1.7;
 
-      transition: 0.2s;
+      transition:
+        background 0.15s,
+        box-shadow 0.15s;
     }
 
     textarea::placeholder {
-      color: #777;
+      color: #999;
     }
 
     textarea:focus {
-      border-color: #ffd400;
+      background: #fffef0;
 
       box-shadow:
-        0 0 0 3px rgba(255, 212, 0, 0.1);
+        4px 4px 0 #ffe15c;
     }
 
     .form-bottom {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
-      gap: 15px;
+      gap: 12px;
 
-      margin-top: 13px;
+      margin-top: 12px;
     }
 
     .counter {
-      color: #777;
-      font-size: 12px;
+      color: #888;
+
+      font-size: 11px;
+
+      font-weight: 700;
     }
 
     .counter strong {
-      color: #ffd400;
+      color: #171717;
     }
 
-    .submit-btn {
-      border: 0;
-      border-radius: 13px;
+    .submit-button {
+      border:
+        2px
+        solid
+        #171717;
 
-      background: #ffd400;
-      color: #111;
+      background: #ffe15c;
 
-      padding: 13px 20px;
+      color: #171717;
+
+      border-radius: 10px;
+
+      padding: 11px 16px;
+
+      font-size: 13px;
 
       font-weight: 1000;
-      font-size: 14px;
 
       cursor: pointer;
+
+      box-shadow:
+        3px 3px 0 #171717;
+
+      transition:
+        transform 0.1s,
+        box-shadow 0.1s,
+        background 0.1s;
+    }
+
+    .submit-button:hover {
+      background: #ffdf43;
+
+      transform:
+        translate(
+          1px,
+          1px
+        );
+
+      box-shadow:
+        2px 2px 0 #171717;
+    }
+
+    .submit-button:active {
+      transform:
+        translate(
+          3px,
+          3px
+        );
+
+      box-shadow: none;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+
+      transform: none;
+
+      box-shadow:
+        3px 3px 0 #171717;
+    }
+
+    /* ========================================
+       MESSAGE
+    ======================================== */
+
+    .message {
+      display: none;
+
+      margin-top: 13px;
+
+      padding: 11px 13px;
+
+      border:
+        2px
+        solid
+        #171717;
+
+      border-radius: 10px;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      line-height: 1.5;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .success {
+      background: #e5f8df;
+    }
+
+    .error {
+      background: #ffe1e1;
+    }
+
+    /* ========================================
+       REPORT HEADER
+    ======================================== */
+
+    .report-heading {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 15px;
+    }
+
+    .report-heading h2 {
+      margin: 0;
+
+      font-size: 18px;
+
+      font-weight: 1000;
+
+      letter-spacing: -0.8px;
+    }
+
+    .count {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-width: 29px;
+
+      height: 27px;
+
+      padding: 0 8px;
+
+      background: #ffe15c;
+
+      border:
+        2px
+        solid
+        #171717;
+
+      border-radius: 999px;
+
+      font-size: 11px;
+
+      font-weight: 1000;
+    }
+
+    /* ========================================
+       REPORT LIST
+    ======================================== */
+
+    .reports {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 11px;
+    }
+
+    .report {
+      position: relative;
+
+      padding: 15px;
+
+      background: #fafafa;
+
+      border:
+        1.5px
+        solid
+        #222;
+
+      border-radius: 12px;
 
       transition:
         transform 0.15s,
         background 0.15s;
     }
 
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      background: #ffe34d;
+    .report:hover {
+      transform:
+        translateY(-1px);
+
+      background: #fffef0;
     }
 
-    .submit-btn:active {
-      transform: translateY(0);
+    .report.new-report {
+      animation:
+        newReport 0.65s ease;
     }
 
-    .submit-btn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* =========================
-       SUCCESS
-    ========================= */
-
-    .success {
-      display: none;
-
-      margin-top: 16px;
-
-      background: #132817;
-      border: 1px solid #24552d;
-
-      color: #8df49c;
-
-      border-radius: 13px;
-
-      padding: 13px 15px;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .success.show {
-      display: block;
-    }
-
-    .error {
-      display: none;
-
-      margin-top: 16px;
-
-      background: #321515;
-      border: 1px solid #642727;
-
-      color: #ff9c9c;
-
-      border-radius: 13px;
-
-      padding: 13px 15px;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .error.show {
-      display: block;
-    }
-
-    /* =========================
-       REPORT LIST
-    ========================= */
-
-    .report-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 18px;
-    }
-
-    .report-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 32px;
-      height: 28px;
-
-      padding: 0 9px;
-
-      border-radius: 999px;
-
-      background: #ffd400;
-      color: #111;
-
-      font-size: 12px;
-      font-weight: 1000;
-    }
-
-    .reports {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .report {
-      background: #111;
-
-      border: 1px solid #303030;
-      border-radius: 15px;
-
-      padding: 16px;
-
-      animation: appear 0.25s ease;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(5px);
+    @keyframes newReport {
+      0% {
+        background: #ffe15c;
+        transform: translateY(-5px);
       }
 
-      to {
-        opacity: 1;
+      100% {
+        background: #fafafa;
         transform: translateY(0);
       }
     }
 
     .report-top {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 9px;
+    }
+
+    .report-number {
+      color: #171717;
+
+      font-size: 10px;
+
+      font-weight: 1000;
+
+      letter-spacing: 0.5px;
+    }
+
+    .report-date {
+      color: #999;
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      white-space: nowrap;
+    }
+
+    .report-content {
+      color: #333;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      white-space: pre-wrap;
+
+      word-break: break-word;
+    }
+
+    /* ========================================
+       EMPTY / LOADING
+    ======================================== */
+
+    .status {
+      padding: 28px 10px;
+
+      text-align: center;
+
+      color: #999;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       REALTIME STATUS
+    ======================================== */
+
+    .realtime-status {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 6px;
+
+      margin-top: 13px;
+
+      color: #999;
+
+      font-size: 10px;
+
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #aaa;
+    }
+
+    .status-dot.connected {
+      background: #42b35a;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          66,
+          179,
+          90,
+          0.12
+        );
+    }
+
+    .status-dot.error {
+      background: #e05252;
+    }
+
+    /* ========================================
+       1303
+    ======================================== */
+
+    .help-card {
+      background:
+        #fff;
+
+      position: relative;
+    }
+
+    .help-card::before {
+      content: "REAL HELP";
+
+      position: absolute;
+
+      top: -11px;
+      right: 17px;
+
+      padding: 5px 8px;
+
+      background: #171717;
+
+      color: #ffe15c;
+
+      border-radius: 6px;
+
+      font-size: 9px;
+
+      font-weight: 1000;
+
+      letter-spacing: 0.5px;
+    }
+
+    .help-title {
+      display: flex;
+
+      align-items: center;
 
       gap: 10px;
 
       margin-bottom: 10px;
     }
 
-    .report-number {
-      color: #ffd400;
-
-      font-size: 11px;
-      font-weight: 1000;
-    }
-
-    .report-date {
-      color: #666;
-
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    .report-content {
-      color: #ddd;
-
-      font-size: 14px;
-      line-height: 1.7;
-
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .loading,
-    .empty {
-      text-align: center;
-
-      color: #666;
-
-      padding: 35px 10px;
-
-      font-size: 13px;
-    }
-
-    /* =========================
-       1303
-    ========================= */
-
-    .help-card {
-      background:
-        linear-gradient(
-          135deg,
-          #202020 0%,
-          #171717 100%
-        );
-
-      border: 2px solid #3a3a3a;
-    }
-
-    .help-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      margin-bottom: 12px;
-    }
-
     .help-icon {
-      width: 40px;
-      height: 40px;
-
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
-      background: #263a68;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
 
-      font-size: 20px;
+      border:
+        2px
+        solid
+        #171717;
+
+      border-radius: 10px;
+
+      background: #e9f4ff;
+
+      font-size: 19px;
     }
 
     .help-title h2 {
-      font-size: 19px;
-      font-weight: 900;
+      margin: 0;
+
+      font-size: 17px;
+
+      font-weight: 1000;
     }
 
-    .help-card p {
-      color: #aaa;
+    .help-description {
+      margin: 0 0 14px;
 
-      font-size: 13px;
+      color: #666;
+
+      font-size: 12px;
+
       line-height: 1.7;
-
-      margin-bottom: 16px;
     }
 
     .help-number {
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       width: 100%;
 
-      background: #263a68;
+      padding: 13px;
 
-      border-radius: 14px;
+      border:
+        2px
+        solid
+        #171717;
 
-      padding: 16px;
+      border-radius: 11px;
 
-      font-size: 24px;
+      background: #e9f4ff;
+
+      color: #171717;
+
+      font-size: 20px;
+
       font-weight: 1000;
 
-      letter-spacing: 2px;
+      letter-spacing: 1px;
 
-      transition: 0.15s;
+      box-shadow:
+        3px 3px 0 #171717;
+
+      transition: 0.1s;
     }
 
     .help-number:hover {
-      background: #30477f;
-      transform: translateY(-2px);
+      transform:
+        translate(
+          1px,
+          1px
+        );
+
+      box-shadow:
+        2px 2px 0 #171717;
     }
 
     .help-note {
-      margin-top: 11px;
+      margin: 12px 0 0;
 
-      color: #666 !important;
+      color: #999;
 
-      font-size: 11px !important;
-      margin-bottom: 0 !important;
+      font-size: 10px;
+
+      line-height: 1.6;
     }
 
-    /* =========================
+    /* ========================================
        FOOTER
-    ========================= */
+    ======================================== */
 
     footer {
-      border-top: 1px solid #292929;
-
-      color: #555;
+      margin-top: 34px;
 
       text-align: center;
 
-      padding: 25px 15px 35px;
+      color: #aaa;
 
-      font-size: 11px;
+      font-size: 10px;
+
       line-height: 1.7;
     }
 
-    /* =========================
+    /* ========================================
        MOBILE
-    ========================= */
+    ======================================== */
 
-    @media (max-width: 600px) {
-      header {
-        padding: 34px 16px 30px;
+    @media (max-width: 520px) {
+
+      .page {
+        width:
+          calc(100% - 20px);
+
+        padding-top: 30px;
       }
 
-      header h1 {
-        letter-spacing: -2px;
-      }
+      .header h1 {
+        font-size: 42px;
 
-      main {
-        width: min(100% - 20px, 900px);
-
-        padding-top: 20px;
+        letter-spacing: -3px;
       }
 
       .card {
         padding: 18px;
 
-        border-radius: 18px;
-      }
-
-      .card-title h2 {
-        font-size: 18px;
+        box-shadow:
+          5px 5px 0 #171717;
       }
 
       .form-bottom {
         align-items: stretch;
+
         flex-direction: column;
       }
 
-      .submit-btn {
+      .submit-button {
         width: 100%;
-        padding: 15px;
+
+        padding: 14px;
       }
 
       .report-top {
         align-items: flex-start;
+
         flex-direction: column;
+
+        gap: 5px;
       }
 
       .report-date {
-        font-size: 10px;
+        font-size: 9px;
       }
     }
   </style>
@@ -555,35 +803,47 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <div class="page">
 
-  <header>
-    <div class="badge">
-      YH REPORT CENTER
-    </div>
+    <!-- ======================================
+         HEADER
+    ======================================= -->
 
-    <h1>용현이 신고하기</h1>
+    <header class="header">
 
-    <p>
-      용현이에게 무슨 일이 있었는지 제보해주세요.
-    </p>
-  </header>
+      <div class="header-badge">
+        🚨 YH REPORT CENTER
+      </div>
+
+      <h1>
+        용현이 신고하기
+      </h1>
+
+      <p>
+        용현이의 만행(?)을 목격하셨나요?
+        <br>
+        지금 바로 신고하세요.
+      </p>
+
+    </header>
 
 
-  <main>
-
-    <!-- =========================
+    <!-- ======================================
          REPORT FORM
-    ========================= -->
+    ======================================= -->
 
     <section class="card">
 
       <div class="card-title">
-        <h2>🚨 신고 접수</h2>
 
-        <span>ANONYMOUS</span>
+        <h2>
+          📝 신고 접수
+        </h2>
+
+        <span class="card-label">
+          ANONYMOUS
+        </span>
+
       </div>
 
       <textarea
@@ -592,11 +852,11 @@
         placeholder="용현이가 무엇을 했는지 작성해주세요.
 
 예시)
-- 또 지각함
-- 갑자기 사라짐
-- 단체 채팅방에서 이상한 말을 함
-- 간식을 혼자 먹음
-- 기타 신고할 사항..."
+• 또 지각함
+• 갑자기 사라짐
+• 단체 채팅방에서 이상한 말을 함
+• 간식을 혼자 먹음
+• 기타 신고할 사항..."
       ></textarea>
 
       <div class="form-bottom">
@@ -608,24 +868,25 @@
 
         <button
           type="button"
-          class="submit-btn"
-          id="submitBtn"
+          class="submit-button"
+          id="submitButton"
         >
-          🚨 신고 접수하기
+          🚨 신고하기
         </button>
 
       </div>
 
       <div
-        class="success"
+        class="message success"
         id="successMessage"
       >
-        ✅ 신고가 정상적으로 접수되었습니다.
-        용현이에게 전달될 예정입니다. 아마도요.
+        ✅ 신고 접수 완료!
+        용현이에게 전달될 예정입니다.
+        아마도요.
       </div>
 
       <div
-        class="error"
+        class="message error"
         id="errorMessage"
       >
         ❌ 신고 접수에 실패했습니다.
@@ -635,24 +896,24 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ======================================
          REPORT LIST
-    ========================= -->
+    ======================================= -->
 
     <section class="card">
 
-      <div class="report-header">
+      <div class="report-heading">
 
-        <div class="card-title" style="margin-bottom:0;">
-          <h2>📋 누적 신고 내역</h2>
-        </div>
+        <h2>
+          📢 누적 신고 내역
+        </h2>
 
-        <div
-          class="report-count"
+        <span
+          class="count"
           id="reportCount"
         >
           0
-        </div>
+        </span>
 
       </div>
 
@@ -660,17 +921,30 @@
         class="reports"
         id="reports"
       >
-        <div class="loading">
+        <div class="status">
           신고 내역을 불러오는 중...
         </div>
+      </div>
+
+      <div class="realtime-status">
+
+        <span
+          class="status-dot"
+          id="realtimeDot"
+        ></span>
+
+        <span id="realtimeText">
+          실시간 연결 확인 중...
+        </span>
+
       </div>
 
     </section>
 
 
-    <!-- =========================
+    <!-- ======================================
          1303
-    ========================= -->
+    ======================================= -->
 
     <section class="card help-card">
 
@@ -686,15 +960,15 @@
 
       </div>
 
-      <p>
+      <p class="help-description">
         실제 군 생활의 고충이나 사건·사고,
         군 범죄·성폭력 등 상담 및 신고가 필요한 경우에는
         국방헬프콜 <strong>1303</strong>을 이용하세요.
       </p>
 
       <a
-        class="help-number"
         href="tel:1303"
+        class="help-number"
       >
         ☎ 국방헬프콜 1303
       </a>
@@ -706,23 +980,25 @@
 
     </section>
 
-  </main>
 
+    <!-- ======================================
+         FOOTER
+    ======================================= -->
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+    <footer>
+      YH REPORT CENTER
+      <br>
+      This is an unofficial entertainment website.
+    </footer>
 
-  <footer>
-    YH REPORT CENTER<br />
-    This is an unofficial entertainment website.
-  </footer>
+  </div>
 
 
   <script>
+
     /* ==========================================
        SUPABASE CONFIG
-       ========================================== */
+    ========================================== */
 
     const SUPABASE_URL =
       "https://tmzzohugipsqiibiyqrj.supabase.co";
@@ -732,8 +1008,8 @@
 
 
     /* ==========================================
-       SUPABASE INITIALIZE
-       ========================================== */
+       INITIALIZE
+    ========================================== */
 
     const {
       createClient
@@ -748,33 +1024,57 @@
 
     /* ==========================================
        ELEMENTS
-       ========================================== */
+    ========================================== */
 
     const reportInput =
-      document.getElementById("reportInput");
+      document.getElementById(
+        "reportInput"
+      );
 
     const charCount =
-      document.getElementById("charCount");
+      document.getElementById(
+        "charCount"
+      );
 
-    const submitBtn =
-      document.getElementById("submitBtn");
+    const submitButton =
+      document.getElementById(
+        "submitButton"
+      );
 
     const successMessage =
-      document.getElementById("successMessage");
+      document.getElementById(
+        "successMessage"
+      );
 
     const errorMessage =
-      document.getElementById("errorMessage");
+      document.getElementById(
+        "errorMessage"
+      );
 
-    const reportsContainer =
-      document.getElementById("reports");
+    const reports =
+      document.getElementById(
+        "reports"
+      );
 
     const reportCount =
-      document.getElementById("reportCount");
+      document.getElementById(
+        "reportCount"
+      );
+
+    const realtimeDot =
+      document.getElementById(
+        "realtimeDot"
+      );
+
+    const realtimeText =
+      document.getElementById(
+        "realtimeText"
+      );
 
 
     /* ==========================================
-       CHARACTER COUNTER
-       ========================================== */
+       CHARACTER COUNT
+    ========================================== */
 
     reportInput.addEventListener(
       "input",
@@ -788,39 +1088,69 @@
 
 
     /* ==========================================
-       HTML ESCAPE
-       ========================================== */
+       ESCAPE HTML
+    ========================================== */
 
     function escapeHTML(value) {
 
-      return value
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+      return String(value)
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
 
     /* ==========================================
        DATE FORMAT
-       ========================================== */
+    ========================================== */
 
-    function formatDate(dateString) {
+    function formatDate(
+      dateString
+    ) {
 
       const date =
-        new Date(dateString);
+        new Date(
+          dateString
+        );
 
       return new Intl.DateTimeFormat(
         "ko-KR",
         {
-          timeZone: "Asia/Seoul",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit"
+          timeZone:
+            "Asia/Seoul",
+
+          year:
+            "numeric",
+
+          month:
+            "2-digit",
+
+          day:
+            "2-digit",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit"
         }
       ).format(date);
 
@@ -828,13 +1158,71 @@
 
 
     /* ==========================================
+       CREATE REPORT ELEMENT
+    ========================================== */
+
+    function createReportElement(
+      report,
+      number,
+      isNew = false
+    ) {
+
+      const article =
+        document.createElement(
+          "article"
+        );
+
+      article.className =
+        "report";
+
+      if (isNew) {
+
+        article.classList.add(
+          "new-report"
+        );
+
+      }
+
+      article.dataset.id =
+        report.id;
+
+      article.innerHTML = `
+
+        <div class="report-top">
+
+          <span class="report-number">
+            REPORT #${number}
+          </span>
+
+          <span class="report-date">
+            ${formatDate(
+              report.created_at
+            )}
+          </span>
+
+        </div>
+
+        <div class="report-content">
+          ${escapeHTML(
+            report.content
+          )}
+        </div>
+
+      `;
+
+      return article;
+
+    }
+
+
+    /* ==========================================
        LOAD REPORTS
-       ========================================== */
+    ========================================== */
 
     async function loadReports() {
 
-      reportsContainer.innerHTML = `
-        <div class="loading">
+      reports.innerHTML = `
+        <div class="status">
           신고 내역을 불러오는 중...
         </div>
       `;
@@ -844,13 +1232,16 @@
         error
       } = await supabaseClient
         .from("yh_reports")
-        .select("id, content, created_at")
+        .select(
+          "id, content, created_at"
+        )
         .order(
           "created_at",
           {
             ascending: false
           }
         );
+
 
       if (error) {
 
@@ -859,28 +1250,47 @@
           error
         );
 
-        reportsContainer.innerHTML = `
-          <div class="empty">
+        reports.innerHTML = `
+          <div class="status">
             신고 내역을 불러오지 못했습니다.
           </div>
         `;
 
-        reportCount.textContent = "0";
+        reportCount.textContent =
+          "0";
 
         return;
 
       }
 
 
+      renderReports(data);
+
+    }
+
+
+    /* ==========================================
+       RENDER REPORTS
+    ========================================== */
+
+    function renderReports(
+      data,
+      newReportId = null
+    ) {
+
       reportCount.textContent =
         data.length;
 
 
-      if (!data.length) {
+      if (
+        !data ||
+        data.length === 0
+      ) {
 
-        reportsContainer.innerHTML = `
-          <div class="empty">
-            아직 접수된 신고가 없습니다.<br />
+        reports.innerHTML = `
+          <div class="status">
+            아직 접수된 신고가 없습니다.
+            <br>
             첫 번째 신고자가 되어보세요.
           </div>
         `;
@@ -890,43 +1300,38 @@
       }
 
 
-      reportsContainer.innerHTML =
-        data
-          .map(
-            (report, index) => {
+      reports.innerHTML = "";
 
-              return `
-                <article class="report">
 
-                  <div class="report-top">
+      data.forEach(
+        (
+          report,
+          index
+        ) => {
 
-                    <span class="report-number">
-                      REPORT #${data.length - index}
-                    </span>
+          const number =
+            data.length - index;
 
-                    <span class="report-date">
-                      ${formatDate(report.created_at)}
-                    </span>
+          const element =
+            createReportElement(
+              report,
+              number,
+              report.id === newReportId
+            );
 
-                  </div>
+          reports.appendChild(
+            element
+          );
 
-                  <div class="report-content">
-                    ${escapeHTML(report.content)}
-                  </div>
-
-                </article>
-              `;
-
-            }
-          )
-          .join("");
+        }
+      );
 
     }
 
 
     /* ==========================================
        SUBMIT REPORT
-       ========================================== */
+    ========================================== */
 
     async function submitReport() {
 
@@ -934,53 +1339,69 @@
         reportInput.value.trim();
 
 
-      successMessage.classList.remove("show");
-      errorMessage.classList.remove("show");
+      successMessage.classList.remove(
+        "show"
+      );
+
+      errorMessage.classList.remove(
+        "show"
+      );
 
 
       if (!content) {
 
-        reportInput.focus();
-
         errorMessage.textContent =
           "❌ 신고 내용을 입력해주세요.";
 
-        errorMessage.classList.add("show");
+        errorMessage.classList.add(
+          "show"
+        );
+
+        reportInput.focus();
 
         return;
 
       }
 
 
-      if (content.length > 2000) {
+      if (
+        content.length > 2000
+      ) {
 
         errorMessage.textContent =
           "❌ 신고 내용은 2,000자 이하로 작성해주세요.";
 
-        errorMessage.classList.add("show");
+        errorMessage.classList.add(
+          "show"
+        );
 
         return;
 
       }
 
 
-      submitBtn.disabled = true;
+      submitButton.disabled =
+        true;
 
-      submitBtn.textContent =
+      submitButton.textContent =
         "접수 중...";
 
 
       try {
 
         const {
+          data,
           error
         } = await supabaseClient
           .from("yh_reports")
           .insert([
             {
-              content: content
+              content:
+                content
             }
-          ]);
+          ])
+          .select()
+          .single();
 
 
         if (error) {
@@ -995,39 +1416,46 @@
         }
 
 
-        /* 성공 */
+        reportInput.value =
+          "";
 
-        reportInput.value = "";
+        charCount.textContent =
+          "0";
 
-        charCount.textContent = "0";
-
-        successMessage.classList.add("show");
-
-
-        await loadReports();
+        successMessage.classList.add(
+          "show"
+        );
 
 
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        /*
+         * Realtime이 연결되어 있다면
+         * INSERT 이벤트를 통해 자동으로
+         * 목록이 갱신된다.
+         *
+         * 따라서 여기서는 직접 append하지 않는다.
+         */
 
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
+          error
+        );
 
         errorMessage.textContent =
           "❌ 신고 접수에 실패했습니다. 잠시 후 다시 시도해주세요.";
 
-        errorMessage.classList.add("show");
+        errorMessage.classList.add(
+          "show"
+        );
 
       } finally {
 
-        submitBtn.disabled = false;
+        submitButton.disabled =
+          false;
 
-        submitBtn.textContent =
-          "🚨 신고 접수하기";
+        submitButton.textContent =
+          "🚨 신고하기";
 
       }
 
@@ -1035,25 +1463,28 @@
 
 
     /* ==========================================
-       BUTTON
-       ========================================== */
+       SUBMIT BUTTON
+    ========================================== */
 
-    submitBtn.addEventListener(
+    submitButton.addEventListener(
       "click",
       submitReport
     );
 
 
     /* ==========================================
-       ENTER / SHORTCUT
-       ========================================== */
+       CTRL + ENTER
+    ========================================== */
 
     reportInput.addEventListener(
       "keydown",
       event => {
 
         if (
-          (event.ctrlKey || event.metaKey) &&
+          (
+            event.ctrlKey ||
+            event.metaKey
+          ) &&
           event.key === "Enter"
         ) {
 
@@ -1068,10 +1499,181 @@
 
 
     /* ==========================================
-       INITIAL LOAD
-       ========================================== */
+       REALTIME
+    ========================================== */
 
-    loadReports();
+    function setupRealtime() {
+
+      const channel =
+        supabaseClient
+          .channel(
+            "yh-reports-realtime"
+          )
+          .on(
+            "postgres_changes",
+            {
+              event:
+                "INSERT",
+
+              schema:
+                "public",
+
+              table:
+                "yh_reports"
+            },
+            payload => {
+
+              console.log(
+                "새 신고:",
+                payload.new
+              );
+
+
+              /*
+               * 현재 목록을 다시 조회한다.
+               *
+               * 단순히 payload를 추가하는 것보다
+               * 서버의 실제 데이터를 다시 읽어
+               * 목록 순서와 신고 번호를 정확하게 유지한다.
+               */
+
+              refreshAfterRealtime(
+                payload.new.id
+              );
+
+            }
+          )
+          .subscribe(
+            status => {
+
+              console.log(
+                "Realtime:",
+                status
+              );
+
+
+              if (
+                status ===
+                "SUBSCRIBED"
+              ) {
+
+                realtimeDot.className =
+                  "status-dot connected";
+
+                realtimeText.textContent =
+                  "실시간 연결됨";
+
+              }
+
+
+              if (
+                status ===
+                "CHANNEL_ERROR"
+              ) {
+
+                realtimeDot.className =
+                  "status-dot error";
+
+                realtimeText.textContent =
+                  "실시간 연결 오류";
+
+              }
+
+
+              if (
+                status ===
+                "TIMED_OUT"
+              ) {
+
+                realtimeDot.className =
+                  "status-dot error";
+
+                realtimeText.textContent =
+                  "실시간 연결 시간 초과";
+
+              }
+
+
+              if (
+                status ===
+                "CLOSED"
+              ) {
+
+                realtimeDot.className =
+                  "status-dot";
+
+                realtimeText.textContent =
+                  "실시간 연결 종료";
+
+              }
+
+            }
+          );
+
+
+      return channel;
+
+    }
+
+
+    /* ==========================================
+       REFRESH AFTER REALTIME
+    ========================================== */
+
+    async function refreshAfterRealtime(
+      newReportId
+    ) {
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("yh_reports")
+        .select(
+          "id, content, created_at"
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+      if (error) {
+
+        console.error(
+          "실시간 갱신 실패:",
+          error
+        );
+
+        return;
+
+      }
+
+
+      renderReports(
+        data,
+        newReportId
+      );
+
+    }
+
+
+    /* ==========================================
+       INITIALIZE
+    ========================================== */
+
+    async function initialize() {
+
+      await loadReports();
+
+      setupRealtime();
+
+    }
+
+
+    initialize();
 
   </script>
 
