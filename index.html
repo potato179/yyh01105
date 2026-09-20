@@ -47,7 +47,7 @@
 
     /* =========================
        HEADER
-    ========================= */
+       ========================= */
 
     .header {
       text-align: center;
@@ -97,87 +97,6 @@
 
       font-size: 14px;
       line-height: 1.6;
-    }
-
-    /* =========================
-       1303
-       ========================= */
-
-    .help-call {
-      margin-bottom: 18px;
-
-      padding: 20px;
-
-      border-radius: 18px;
-
-      background: #172b4d;
-      color: white;
-
-      box-shadow: 6px 6px 0 #0d1728;
-    }
-
-    .help-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      margin-bottom: 10px;
-    }
-
-    .help-icon {
-      width: 38px;
-      height: 38px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #fff;
-
-      border-radius: 50%;
-
-      font-size: 20px;
-    }
-
-    .help-title {
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .help-number {
-      margin: 5px 0 10px;
-
-      font-size: 42px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      line-height: 1;
-    }
-
-    .help-description {
-      margin: 0;
-
-      color: #dce5f3;
-
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    .help-button {
-      display: block;
-
-      margin-top: 15px;
-      padding: 12px;
-
-      border-radius: 10px;
-
-      background: white;
-      color: #172b4d;
-
-      text-align: center;
-      text-decoration: none;
-
-      font-size: 13px;
-      font-weight: 800;
     }
 
     /* =========================
@@ -445,6 +364,87 @@
     }
 
     /* =========================
+       1303
+       ========================= */
+
+    .help-call {
+      margin-bottom: 22px;
+
+      padding: 20px;
+
+      border-radius: 18px;
+
+      background: #172b4d;
+      color: white;
+
+      box-shadow: 6px 6px 0 #0d1728;
+    }
+
+    .help-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 10px;
+    }
+
+    .help-icon {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #fff;
+
+      border-radius: 50%;
+
+      font-size: 20px;
+    }
+
+    .help-title {
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .help-number {
+      margin: 5px 0 10px;
+
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .help-description {
+      margin: 0;
+
+      color: #dce5f3;
+
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .help-button {
+      display: block;
+
+      margin-top: 15px;
+      padding: 12px;
+
+      border-radius: 10px;
+
+      background: white;
+      color: #172b4d;
+
+      text-align: center;
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* =========================
        FOOTER
        ========================= */
 
@@ -496,41 +496,6 @@
     </p>
 
   </header>
-
-
-  <!-- 국방헬프콜 -->
-  <section class="help-call">
-
-    <div class="help-top">
-
-      <div class="help-icon">
-        📞
-      </div>
-
-      <div class="help-title">
-        진짜 신고가 필요하다면?
-      </div>
-
-    </div>
-
-    <div class="help-number">
-      1303
-    </div>
-
-    <p class="help-description">
-      국방헬프콜 1303<br>
-      병영생활 고충 상담 · 군범죄·성폭력 신고/상담 ·
-      방위사업비리 신고/상담
-    </p>
-
-    <a
-      class="help-button"
-      href="tel:1303"
-    >
-      📞 국방헬프콜 1303 전화하기
-    </a>
-
-  </section>
 
 
   <!-- 신고 작성 -->
@@ -656,6 +621,41 @@
   </section>
 
 
+  <!-- 국방헬프콜 1303 -->
+  <section class="help-call">
+
+    <div class="help-top">
+
+      <div class="help-icon">
+        📞
+      </div>
+
+      <div class="help-title">
+        진짜 신고가 필요하다면?
+      </div>
+
+    </div>
+
+    <div class="help-number">
+      1303
+    </div>
+
+    <p class="help-description">
+      국방헬프콜 1303<br>
+      병영생활 고충 상담 · 군범죄·성폭력 신고/상담 ·
+      방위사업비리 신고/상담
+    </p>
+
+    <a
+      class="help-button"
+      href="tel:1303"
+    >
+      📞 국방헬프콜 1303 전화하기
+    </a>
+
+  </section>
+
+
   <footer>
     YH Report Center © 2026<br>
     이 사이트는 실제 신고기관이 아닙니다.
@@ -689,12 +689,7 @@
 
 
   /*
-   * ---------------------------------------
-   * 현재는 브라우저 저장 방식
-   * ---------------------------------------
-   *
-   * 이 방식은 같은 브라우저에서만
-   * 신고 내용이 유지됩니다.
+   * 현재는 브라우저 저장 방식입니다.
    *
    * 실제 여러 사람이 공유하는 게시판으로
    * 만들려면 Supabase 연결이 필요합니다.
@@ -836,15 +831,11 @@
     );
 
 
-    /* 입력창 초기화 */
-
     textarea.value = "";
 
     counter.textContent =
       "0 / 2000";
 
-
-    /* 완료 화면 */
 
     form.style.display =
       "none";
@@ -852,8 +843,6 @@
     success.style.display =
       "block";
 
-
-    /* 목록 갱신 */
 
     renderReports();
 
