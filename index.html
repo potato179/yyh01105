@@ -1,0 +1,587 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>용현이 신고센터</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans KR",
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          #fff4d8 0,
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          #e9f1ff 0,
+          transparent 35%
+        ),
+        #f6f7f9;
+
+      color: #171717;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* =========================
+       Header
+    ========================= */
+
+    .top {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding: 7px 12px;
+
+      background: #171717;
+      color: white;
+
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .title {
+      margin: 16px 0 8px;
+
+      font-size: clamp(30px, 7vw, 46px);
+      line-height: 1.1;
+
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .title span {
+      display: inline-block;
+
+      transform: rotate(-2deg);
+
+      background: #ffe15c;
+
+      padding: 0 8px 4px;
+
+      border-radius: 7px;
+    }
+
+    .subtitle {
+      margin: 0;
+
+      color: #777;
+
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       Card
+    ========================= */
+
+    .card {
+      position: relative;
+
+      background: white;
+
+      border: 2px solid #171717;
+      border-radius: 22px;
+
+      padding: 28px;
+
+      box-shadow:
+        7px 7px 0 #171717;
+    }
+
+    .warning {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 22px;
+
+      padding: 13px 15px;
+
+      background: #fff7d6;
+
+      border: 1px solid #eadb8a;
+      border-radius: 12px;
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .warning-icon {
+      font-size: 21px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 10px;
+    }
+
+    .section-title strong {
+      font-size: 15px;
+    }
+
+    .counter {
+      color: #999;
+      font-size: 12px;
+    }
+
+    textarea {
+      display: block;
+
+      width: 100%;
+      min-height: 220px;
+
+      padding: 16px;
+
+      border: 2px solid #dedede;
+      border-radius: 14px;
+
+      resize: vertical;
+
+      font-family: inherit;
+      font-size: 15px;
+      line-height: 1.6;
+
+      outline: none;
+
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    }
+
+    textarea:hover {
+      border-color: #bbb;
+    }
+
+    textarea:focus {
+      border-color: #171717;
+
+      box-shadow:
+        4px 4px 0 #ffe15c;
+    }
+
+    textarea::placeholder {
+      color: #aaa;
+    }
+
+    /* =========================
+       Button
+       ========================= */
+
+    .submit-button {
+      width: 100%;
+
+      margin-top: 16px;
+      padding: 17px 20px;
+
+      border: 2px solid #171717;
+      border-radius: 13px;
+
+      background: #ffdf43;
+      color: #171717;
+
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 900;
+
+      cursor: pointer;
+
+      box-shadow:
+        4px 4px 0 #171717;
+
+      transition:
+        transform 0.12s,
+        box-shadow 0.12s,
+        background 0.12s;
+    }
+
+    .submit-button:hover {
+      background: #ffea73;
+      transform: translate(-1px, -1px);
+
+      box-shadow:
+        5px 5px 0 #171717;
+    }
+
+    .submit-button:active {
+      transform: translate(3px, 3px);
+
+      box-shadow:
+        1px 1px 0 #171717;
+    }
+
+    /* =========================
+       Footer
+       ========================= */
+
+    .footer {
+      margin-top: 18px;
+
+      text-align: center;
+
+      color: #999;
+
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       Success
+       ========================= */
+
+    .success {
+      display: none;
+
+      text-align: center;
+
+      padding: 28px 10px 8px;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+
+      margin: 0 auto 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #ffe15c;
+
+      border: 2px solid #171717;
+      border-radius: 50%;
+
+      font-size: 34px;
+
+      box-shadow:
+        4px 4px 0 #171717;
+
+      animation: pop 0.35s ease-out;
+    }
+
+    .success h2 {
+      margin: 0 0 8px;
+
+      font-size: 25px;
+      letter-spacing: -0.8px;
+    }
+
+    .success p {
+      margin: 0;
+
+      color: #777;
+
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .back-button {
+      margin-top: 22px;
+
+      padding: 12px 18px;
+
+      border: 2px solid #171717;
+      border-radius: 10px;
+
+      background: white;
+
+      font-family: inherit;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: #f5f5f5;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0.5) rotate(-10deg);
+      }
+
+      70% {
+        transform: scale(1.1) rotate(3deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    /* =========================
+       Mobile
+       ========================= */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 18px 14px;
+      }
+
+      .card {
+        padding: 22px 18px;
+
+        border-radius: 18px;
+
+        box-shadow:
+          5px 5px 0 #171717;
+      }
+
+      .title {
+        font-size: 34px;
+      }
+
+      textarea {
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="wrapper">
+
+    <!-- Header -->
+    <header class="top">
+
+      <div class="badge">
+        🚨 YH REPORT CENTER
+      </div>
+
+      <h1 class="title">
+        용현이 <span>신고하기</span>
+      </h1>
+
+      <p class="subtitle">
+        용현이의 만행(?)을 목격하셨나요?<br />
+        여러분의 소중한 제보를 기다리고 있습니다.
+      </p>
+
+    </header>
+
+
+    <!-- Main Card -->
+    <section class="card">
+
+      <!-- Warning -->
+      <div class="warning">
+
+        <div class="warning-icon">
+          ⚠️
+        </div>
+
+        <div>
+          <strong>주의사항</strong><br />
+          장난으로 운영되는 사이트입니다.
+          너무 진지하게 받아들이지 마세요.
+        </div>
+
+      </div>
+
+
+      <!-- Form -->
+      <form id="reportForm">
+
+        <div class="section-title">
+
+          <strong>
+            📋 신고 내용
+          </strong>
+
+          <span
+            class="counter"
+            id="counter"
+          >
+            0 / 2000
+          </span>
+
+        </div>
+
+
+        <textarea
+          id="report"
+          name="report"
+          maxlength="2000"
+          placeholder="예시)
+- 용현이가 또 약속시간에 늦었습니다.
+- 용현이가 제 간식을 먹었습니다.
+- 그냥 신고하고 싶었습니다."
+          required
+        ></textarea>
+
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          🚨 용현이 신고 접수하기
+        </button>
+
+      </form>
+
+
+      <!-- Success -->
+      <div
+        class="success"
+        id="successMessage"
+      >
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+        <h2>
+          신고 접수 완료!
+        </h2>
+
+        <p>
+          소중한 신고가 정상적으로 접수되었습니다.<br />
+          용현이에게 전달될 예정입니다. 아마도요.
+        </p>
+
+        <button
+          class="back-button"
+          id="backButton"
+          type="button"
+        >
+          다시 신고하기
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <footer class="footer">
+      YH Report Center © 2026<br />
+      모든 신고는 매우 진지하게(?) 검토됩니다.
+    </footer>
+
+  </main>
+
+
+  <script>
+    const form = document.getElementById("reportForm");
+    const textarea = document.getElementById("report");
+    const counter = document.getElementById("counter");
+
+    const successMessage =
+      document.getElementById("successMessage");
+
+    const backButton =
+      document.getElementById("backButton");
+
+
+    /* 글자 수 */
+    textarea.addEventListener("input", () => {
+      counter.textContent =
+        `${textarea.value.length} / 2000`;
+    });
+
+
+    /* 신고 */
+    form.addEventListener("submit", (event) => {
+
+      event.preventDefault();
+
+      const content =
+        textarea.value.trim();
+
+      if (!content) {
+        alert("🚨 신고 내용을 입력해주세요.");
+        textarea.focus();
+        return;
+      }
+
+
+      /*
+       * 현재는 테스트용입니다.
+       *
+       * 실제 신고 내용을 저장하려면
+       * 이 부분에 Supabase 등의 DB 연결을
+       * 추가하면 됩니다.
+       */
+
+      console.log("신고 내용:", content);
+
+
+      /* 입력 화면 숨기기 */
+      form.style.display = "none";
+
+
+      /* 완료 화면 표시 */
+      successMessage.style.display = "block";
+
+
+      /* 맨 위로 이동 */
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* 다시 신고 */
+    backButton.addEventListener("click", () => {
+
+      textarea.value = "";
+      counter.textContent = "0 / 2000";
+
+      successMessage.style.display = "none";
+      form.style.display = "block";
+
+      textarea.focus();
+
+    });
+  </script>
+
+</body>
+</html>
+```
